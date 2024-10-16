@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+        @import "~@fortawesome/fontawesome-free/css/all.min.css";
+        #ahead{
+            font-family: "Poetsen One", sans-serif;
+            font-weight: 300;
+            font-style: normal;
+            margin-top: 500px;
+            padding: 1%;
+            padding-top: 5px;
+            
+        }
+        #hlabel {
+            text-align: center;
+            color: rgb(102, 102, 102);
+            font-family: "Roboto Mono", monospace;
+            font-optical-sizing: auto;
+            font-weight: 1000;
+            font-style: normal;
+            size: 5em;
+            text-emphasis: 5em;
+        }
+
+        h2 {
+            font-family: "Poetsen One", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            padding-top: 50px;
+        }
+
+        h4 {
+            font-family: "Poetsen One", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            padding-top: 50px;
+        }
+
+        #text {
+            font-family: "Poetsen One", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        #approve:hover {
+            color: whitesmoke;
+            border: solid whitesmoke 1px;
+        }
+
+    
+
+        #lis {
+            color: rgb(26, 57, 90);
+            font-weight: 700;
+            font-style: normal;
+
+        }
+        #lis a:hover {
+            background-color: rgb(116, 74, 121);
+            color: white;
+            border-radius: 5%;
+        }
+
+        #lst {
+            border-bottom: solid rgb(221, 221, 231) 1px;
+            color: rgb(35, 75, 116);
+            font-weight: 700;
+            font-style: normal;
+            background-color:rgb(252, 244, 249);
+        }
+        #lst :hover{
+            background-color: aqua;
+            color: blue;
+        }
+       
+    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="(link unavailable)"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    {% load static %}
+</head>
+<body>
+    <nav class="navbar navbar-light navbar-expand-md" style="background-color: rgb(248, 213, 233);border: 2px solid white;">
+        <a><img src="{% static 'images/logo.png' %}" class="img-fluid" alt="company name" height="20px" width="110px"></a>
+
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#div1" type="button">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div id="div1" class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item" style="margin-right: 20px;background-color: rgb(248, 213, 233);" id="lis">
+                    <a href="{% url 'dev_home' %}" class="nav-link" id="lis">
+                        <img src="{% static 'images/hom.webp' %}" height="30px" width="30px">
+                    </a>
+                </li>
+
+                <li class="nav-item" style="margin-right: 20px;" id="lis">
+                    <a href="{% url 'dev_viewmodule' %}" class="nav-link" aria-current="page" id="lis">
+                        <button class="btn btn-danger">{{ mcount }}</button>&nbsp;View Task
+                    </a>
+                </li>
+                <li class="nav-item" style="margin-right: 20px;" id="lis">
+                    <a href="{% url 'dev_modules' %}" class="nav-link" aria-current="page" style="margin-top: 2%;" id="lis">&nbsp; View 
+                        WorkProgress
+                    </a>
+                </li>
+                <li class="nav-item" style="margin-right: 20px;" id="lis">
+                    <a href="{% url 'dev_updatework' %}" class="nav-link" aria-current="page" style="margin-top: 2%;" id="lis">&nbsp; Update 
+                        WorkProgress
+                    </a>
+                </li>
+                <li class="nav-item dropdown" id="lis">
+                    <a href="" class="nav-link dropdown-toggle" data-toggle="dropdown" id="lis">
+                        {{ dev }} &nbsp; <img src="{% static 'images/d7.jpeg' %}" height="30px" width="30px"
+                            style="margin-top: 1%;margin-right: 20px;" id="lis" >
+                    </a>
+                    <div class="dropdown-menu" style="width:174px; background-color: rgb(243, 195, 224);">
+                        <a href="" class="dropdown-item" id="lst" style="background-color: rgb(77, 77, 241);color: white;">
+                            {% for u in udev %}
+                            <img src="{% static 'images/t3.png' %}" height="20px" width="20px" >
+                            &nbsp;&nbsp;{{ u.team.tl }}
+                            {% endfor %}
+
+                        </a>
+                        <a href="{% url 'dev_profile' %}" class="dropdown-item" id="lst">
+
+                            <img src="{% static 'images/pro.jpeg' %}" height="20px" width="20px"
+                                style="margin-top: 1%;"> &nbsp; View Profile
+                        </a>
+
+                        <a href="{% url 'dev_change_pwd' %}" class="dropdown-item" id="lst">
+
+                            <img src="{% static 'images/pwd3.png' %}" height="20px" width="20px"
+                                style="margin-top: 1%;"> ChangePassword
+                        </a>
+                        <a href="{% url 'dev_logout' %}" class="dropdown-item" id="lst">
+                            <img src="{% static 'images/logout2.jpeg' %}" height="20px" width="20px"
+                                style="margin-top: 1%;">&nbsp; Logout
+                        </a>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+    </nav>
+    {% block content %}
+    {% endblock %}
+</body>
+
+</html>

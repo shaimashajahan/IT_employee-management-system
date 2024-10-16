@@ -1,0 +1,41 @@
+{% extends 'navbar_developer.html' %}
+{% block content %}
+{% load static %}
+<body style="background-image: url('{% static "images/d22.jpg" %}'); background-size: cover; background-repeat: no-repeat; width: 100%;height:170vh;">
+  <div>
+    <center>
+        
+                   <strong><h5 style="background-color: rgb(42, 42, 83);color: aliceblue;">UPDATE WORK PROGRESS</h5></strong> 
+        
+    </center>
+</div>
+<div style="display:flex;margin-left: 1px;">  
+ 
+  
+    <div style="margin-top: 50px;" class="container" style="text-align: center;">
+        <center>
+          <table class="table table-responsive table-stripped table-hover" style="color:  rgb(116, 74, 121);">
+            <tr style="background-color: rgb(202, 201, 248);"><th>MODULE NAME</th>
+            <th colspan="10" style="text-align: center;">{{ c_date }}</th>
+            </tr>
+            <tbody>
+              {% for m in mo %}
+              <tr class="table" style="color:  rgb(116, 74, 121);">
+                <td style="color: rgb(71, 34, 100);"><b>{{ m.modu.module_name }}</b><br>{{ m.modu.pro.project_name.topic }}</td>
+              
+      
+      
+           <td><a href="{% url 'update_dev' m.id %}"><button class="btn btn-warning" type="submit">
+            UPDATE
+          </button></a></td>
+              </tr>
+      
+              {% endfor %}
+            </tbody>
+        </center>
+      
+        </table>
+      </div>
+</div>   
+</body>
+{% endblock %}

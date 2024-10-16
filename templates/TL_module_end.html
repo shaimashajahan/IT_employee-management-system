@@ -1,0 +1,33 @@
+{% extends 'navbar_TL.html' %}
+{% block content %}
+{% load static %}
+
+    <div style="margin-top: 50px;" class="container" style="text-align: center;">
+      <h3 style="margin-bottom: 20px;"></h3>
+      <center>
+
+    <table class="table table-responsive table-stripped table-hover" >
+       <tr class="table text-danger" style="background-color: rgb(173, 176, 212);" >
+         <th>DEVELOPER NAME</th>
+         <th>MODULE NAME</th>
+         <th>CROSSED DATE</th>
+       </tr>
+       <tbody>
+           {% for m in mo %}
+           {% if m.crossed_date == '1'  and  m.TL == uid %}
+           <tr class="table" style="background-color: rgb(202, 201, 248);">
+               <td>{{ m.u_member.user.username }}</td>
+               <td>{{ m.module_name  }}</td>
+               <td>
+                {{ m.end_date }}
+               </td>
+           </tr>
+           {% endif %}
+           {% endfor %}
+
+       </tbody> 
+     </table>
+    </div>
+    </center>
+
+{% endblock %}

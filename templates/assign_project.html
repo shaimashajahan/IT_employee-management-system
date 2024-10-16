@@ -1,0 +1,120 @@
+{% extends 'navbar_admin.html' %}
+{% block content %}
+{% load static %}
+    <h4 style="color: rgb(234, 234, 235);text-align: center;background-color:rgb(64, 77, 94) ;border: solid rgb(216, 208, 230);margin-bottom: 0%;"
+    class="pt-2 pb-2"> ADD PROJECT
+    </h4>
+    <center>
+    <form enctype="multipart/form-data" action="{% url 'add_project' %}" method="post"
+        style="text-align: center;background-color:rgb(197, 209, 219);border: solid rgb(220, 228, 236);padding-top: 40px;margin-right: 0%;width:97%;">
+        {% csrf_token %}
+        <div>
+            <center>
+                        {% for message in messages %}
+                           <strong><h5 style="background-color: rgb(42, 42, 83);color: aliceblue;">{{ message }}</h5></strong> 
+                        {% endfor %}
+            </center>
+        </div>
+        
+        
+        <div class="row row-cols-1 row-cols-md-4">
+            <div class="col">
+            </div>
+            <div class="col">
+                <div class="form-group">
+
+                    <input type="text" class="form-control" placeholder="Project Title " name="topic">
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+
+                    <input type="text" class="form-control" placeholder="Client Name " name="c_name">
+                </div>
+            </div>
+            <div class="col">
+            </div>
+        </div>
+        <div class="row row-cols-1 row-cols-md-4">
+            <div class="col">
+            </div>
+            <div class="col">
+                <div class="form-group">
+
+                <textarea placeholder="Description" class="form-control" id="udesc" name="desc"></textarea>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+
+                <textarea placeholder="Address" class="form-control" id="uaddr" name="c_addr"></textarea>
+                </div>
+            </div>
+            <div class="col">
+            </div>
+        </div>
+        <div class="row row-cols-1 row-cols-md-4">
+            <div class="col">
+            </div>
+            
+            <div class="col">
+                <div class="form-group">
+                <textarea placeholder="Requirements" class="form-control" id="ureq" name="requi"></textarea>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+
+                    <input type="text" class="form-control" placeholder="Contact Number" name="c_contact">
+                </div>
+                <div class="form-group mt-4">
+
+                    <input type="email" class="form-control" placeholder="E_mail ID" name="c_email">
+                </div>
+            </div>
+            <div class="col">
+            </div>
+        </div>
+        <div class="row row-cols-1 row-cols-md-4">
+            <div class="col">
+            </div>
+            <div class="col">
+                <div class="form-group">
+                <textarea placeholder="Modules" class="form-control" id="uaddr" name="modul"></textarea>
+                </div>
+            </div>
+        
+            <div class="col">
+               
+                <label style="color: darkslategrey;">Start Date</label>
+                <input type="date" class="form-control" placeholder="Start date" id="tname" name="sdate">
+            </div>
+            <div class="col">
+            </div>
+        </div>
+        <div class="row row-cols-1 row-cols-md-4">
+            <div class="col">
+            </div>
+            <div class="col">
+                <label style="color: darkslategrey;">Guidelines</label>
+                <input type="file" class="form-control" name="file" accept="uploads/*">
+        </div>
+           
+            <div class="col">
+                <div class="col">
+                </div>
+                <label style="color: darkslategrey;">End Date</label>
+                <input type="date" class="form-control" placeholder="End date" id="tname" name="edate">
+            </div>
+            <div class="col">
+            </div>
+        </div>
+   
+        
+               <button class="btn btn-primary mt-5 mb-5" type="submit">
+            ADD
+        </button><br><br>    <br>
+
+    </form>
+</center>
+{% endblock %}

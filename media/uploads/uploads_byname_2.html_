@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+  
+    <title>Document</title>
+</head>
+<body>
+
+    <input type="text" name="text1">
+    <input type="button" value="click" onclick="message()">
+    <h1 id="head"></h1>
+    <script src="byname.js"></script>
+
+
+</body>
+</html>

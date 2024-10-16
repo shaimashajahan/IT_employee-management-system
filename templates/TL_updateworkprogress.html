@@ -1,0 +1,38 @@
+{% extends 'navbar_TL.html' %}
+{% block content %}
+{% load static %}
+           
+<h4
+  style="color: rgb(234, 234, 235);text-align: center;background-color:rgb(64, 77, 94) ;border: solid 2px rgb(216, 208, 230);margin-bottom: 0%;"
+  class="pt-2 pb-2">PROJECT  WORK  PROGRESS
+</h4>
+<div class="row" style="width: 100%;">
+  <div class="col"></div>
+
+<div class="col-md-5">
+  <div style="background-color:rgb(227, 227, 248); ;margin-top: 30px;border: 2px solid whitesmoke;">
+  <center>
+    <table class="table table-responsive table-stripped">
+      <tr style="color: rgb(131, 7, 7);"><th><h4 class="pt-0">PROJECTS</h4></th>
+      <th colspan="5" style="text-align: center;"><h4 class="pt-0">{{ c_date }}</h4></th>
+      </tr>
+      <tbody>
+        {% for pro in protl %}
+        <tr class="table" >
+          <td style="color: rgb(4, 75, 4);"><b>{{ pro.project_name.topic }}</b></td>
+          <td><a href="{% url 'updatework' pro.id %}"><button class="btn btn-warning" type="submit">
+                UPDATE
+              </button></a></td>  
+        </tr>
+
+        {% endfor %}
+      </tbody>
+  </center>
+
+  </table>
+</div>
+
+</div>
+<div class="col"></div>
+</div>
+{% endblock %}

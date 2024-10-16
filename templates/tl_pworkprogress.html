@@ -1,0 +1,29 @@
+{% extends 'navbar_TL.html' %}
+{% block content %}
+{% load static %}
+           
+<h4
+  style="color: rgb(234, 234, 235);text-align: center;background-color:rgb(64, 77, 94) ;border: solid 2px rgb(216, 208, 230);margin-bottom: 0%;"
+  class="pt-2 pb-2">PROJECT  WORK  PROGRESS
+</h4>
+
+<div style="background-image:url('{% static "images/b3.jpg" %}');background-size: cover;background-repeat:
+    no-repeat;width: 100%; border: solid rgb(220, 228, 236) 2px ;margin-bottom: 0%;height:100%;">
+    <div class="container-fluid">
+        <div class="row row-cols-2 row-cols-md-5 row-cols-lg-6 mt-5" style="width: 100%;">
+            {% for p in p_tl %}
+            <a href="{% url 'tl_ppworkprogress' p.project_name.id %}">
+                <div class="col">
+                    <div class="card bg-transparent border-0" style="text-align: center;">
+                        <center><img src="{% static 'images/pradmin.png' %}" alt="project_name" class="card-image-top
+         img" height="100px" width="100px"></center>
+                        <h6 id="tl" class="card-title text-white">{{ p.project_name.topic }}</h6>
+                    </div>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+

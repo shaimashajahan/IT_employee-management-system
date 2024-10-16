@@ -1,0 +1,66 @@
+{% extends 'navbar_TL.html' %}
+{% block content %}
+{% load static %}
+
+<h4 style="color: rgb(234, 234, 235);text-align: center;background-color:rgb(64, 77, 94) ;border: solid 2px rgb(216, 208, 230);margin-bottom: 0%;"
+    class="pt-2 pb-2"> PROJECT WORK PROGRESS
+</h4>
+
+
+<div style="background-image:url('{% static "images/pwall4.jpg" %}');background-size: cover;background-repeat:
+    no-repeat;width: 100%; border: solid rgb(220, 228, 236) 2px ;margin-bottom: 0%;height:94%;">
+    <span id="ahead"
+        style="margin-top: 500px; text-align: center;  border-radius: 15px; border: 1px solid white;background-color: #3377b7;text-align: center;width: 500px;color: white;">
+        &nbsp;{{ prtl.project_name.topic }}
+    </span>
+    <div class="container">
+        
+        {% if not project_dates.is_new_month %}
+        <h4 class="text-warning">&nbsp;{{ y }}</h4>
+        <div class="row mt-0 border-0" style="border: 1px solid rgb(150, 63, 63);width: 100%;">
+
+            <h6 id="tl" class="ml-3 text-light"
+                style="border-radius: 15px; border: 1px solid white;background-color: #aab733;text-align: center;width: 180px;">
+                &nbsp;{{ m }}</h6>
+
+        </div>
+        {% endif %}
+        <div class="row row-cols-2 row-cols-md-6 border-0" style="border-radius: 15px; border: 1px solid white;">
+            {% for date in project_dates %}
+            {% if date.is_new_month %}
+            <div class="row mt-0 border-0" style="border-radius: 15px; border: 1px solid rgb(150, 63, 63);width: 100%;">
+                <h6 id="tl" class="ml-3 text-light"
+                    style="border-radius: 15px; border: 1px solid white;background-color: #aab733;text-align: center;width: 180px;">
+                    &nbsp; {{ date.month }}</h6>
+            </div>
+            <div class="row row-cols-2 row-cols-md-6 border-0" style="border-radius: 15px; border: 1px solid white;">
+                {% endif %}
+                <div class="col border-0" style="width: 100%;">
+                    <div class="card bg-transparent border-0 mb-1" style="text-align: center;width: 100%;">
+                        <a href=""> <button class="btn-light mt-2 mb-2 mr-0 ml-0"
+                            style="border-radius: 15px; border: 1px solid white;width: 100%;"><strong><span
+                                    class="d-none d-sm-inline">{{ date.day }}</span></strong>
+                            <span class="d-sm-block d-md-none"><strong>{{ date.day | slice:":3" }}</strong></span>
+
+                            <br>
+                            {{ date.date }} </button>
+                            {% for f in prog %}
+                            {% if f.date == date.datep and f.file %}
+                            <a href="{% url 'open_Pprogress' f.id %}" > <div style="width: 100%;background-color: rgb(10, 122, 6);height: 10px;border:1px solid white;"></div>                     
+                            </a>
+                            {% endif %}
+                            {%  endfor %}
+                        </a>
+                    </div>
+                </div>
+
+                {% if date.is_last_date %}
+            </div>
+            <br>
+            {% endif %}
+            {% endfor %}
+        </div>
+      
+    </div>
+</div>
+    {% endblock %}

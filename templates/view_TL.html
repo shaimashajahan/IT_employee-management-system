@@ -1,0 +1,51 @@
+{% extends 'navbar_admin.html' %}
+{% block content %}
+{% load static %}
+<h4 style="color: rgb(234, 234, 235);text-align: center;background-color:rgb(64, 77, 94) ;border: solid 2px rgb(216, 208, 230);margin-bottom: 0%;"
+class="pt-2 pb-2"> TEAM LEAD DETAILS
+</h4>
+    
+    <div class="table-responsive">
+        <table class="table table-responsive table-stripped table-hover" style="text-align: center;color:rgb(10, 49, 100) ;">
+            <center>
+           <tr style="background-color:rgb(186, 204, 219);border: solid rgb(248, 246, 250) 2px;">
+             <th>NAME</th>
+             <th>EMAIL ID</th>
+             <th>ADDRESS</th>
+             <th>NUMBER</th>
+             <th>COURSE</th>
+             <th>CERTIFICATION</th>
+             <th>DEPARTMENT</th>
+             <th>ACTION</th>
+           </tr>
+           <tbody>
+               {% for t in teamlead %}
+               {% if t.user.user_type == '2' and t.user.status == '2' %}
+                <tr style="background-color:rgb(228, 233, 236);border: solid rgb(248, 246, 250) 2px;">
+                   <td>{{ t.user.first_name }}&nbsp;{{ t.user.last_name }}</td>
+                   <td>{{ t.user.email}}</td>
+                   <td>{{ t.address }}</td>
+                   <td>{{ t.number }}</td>
+                   <td>{{ t.course }}</td>
+                   <td><a href="{% url 'open_certificate' t.id %}"><button class="btn btn-outline-dark">View Certificates</button></a></td>
+                   <td>{{ t.department }}</td>               
+                   <td><a href="{% url 'change_member' t.user.id t.id %}"><button class="btn btn-info">
+                       Change To Developer</button></a><br><br>
+                       <a href="{% url 'deletetl' t.id %}"><button class="btn btn-danger">
+                           DELETE</button></a>
+                   </td>
+                  </tr>
+               {% endif %}
+               {% endfor %}
+           </tbody>  
+        </center>        
+        </table>
+    </div>
+
+        {% endblock %}
+
+
+
+
+
+

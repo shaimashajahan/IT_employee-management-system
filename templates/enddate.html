@@ -1,0 +1,25 @@
+{% extends 'navbar_admin.html' %}
+{% block content %}
+{% load static %}
+<center>
+    <div style="margin-top: 50px;" class="container" style="text-align: center;">
+        
+    <table class="table table-responsive table-stripped table-hover" >
+       <tr class="table text-danger" style="background-color: rgb(173, 176, 212);" >
+         <th>PROJECTS PENDING</th>
+         <th>TEAM LEAD</th>
+         <th>CROSSED DATE</th>
+       </tr>
+       <tbody>
+           {% for c in current %}
+           <tr class="table" style="background-color: rgb(202, 201, 248);">
+               <td>{{ c.topic }}</td>
+               <td>{{ c.u_member.user.username }}</td>
+               <td>{{ c.end_date }}</td>
+           </tr>
+           {% endfor %}
+       </tbody> 
+     </table>
+    </div>
+    </center>
+{% endblock %}

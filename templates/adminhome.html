@@ -1,0 +1,20 @@
+{% extends 'navbar_admin.html' %}
+{% block content %}
+{% load static %}
+    
+<center>
+    <h4 style="color: rgb(234, 234, 235);text-align: center;background-color:rgb(64, 77, 94) ;border: solid 2px rgb(216, 208, 230);"
+        class="pt-2 pb-2"> Welcome to Admin Dashboard
+    </h4>
+
+</center>
+<center>
+            
+    {% for message in messages %}
+       <strong><h5 style="background-color: rgb(4, 100, 68);color: aliceblue;">{{ message }}</h5></strong> 
+    {% endfor %}
+
+</center>
+
+      
+                  {% endblock %}

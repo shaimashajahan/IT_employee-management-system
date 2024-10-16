@@ -1,0 +1,226 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap');
+        @import "~@fortawesome/fontawesome-free/css/all.min.css";
+        #hlabel {
+            text-align: center;
+            padding-top: 18px;
+            color: rgb(102, 102, 102);
+            font-family: "Roboto Mono", monospace;
+            font-optical-sizing: auto;
+            font-weight: 1000;
+            font-style: normal;
+            size: 5em;
+            text-emphasis: 5em;
+        }
+
+        #para {
+
+            padding-left: 10%;
+            padding-right: 10%;
+            font-family: "Roboto Mono", monospace;
+            font-optical-sizing: auto;
+            font-weight: 700;
+            font-style: normal;
+            size: 3em;
+            color: rgb(24, 46, 68);
+            text-align: justify;
+
+
+        }
+
+        #navbar1 a {
+            text-decoration: none;
+            color: white;
+            /* margin-left: 10px; */
+            /* padding-left:10px ; */
+            /* padding-right :10px ; */
+            /* padding-top: 10px; */
+            /* padding-bottom: 10px; */
+            size: 5em;
+            background-color: rgb(35, 75, 116);
+        }
+
+        #navbar1 a:hover {
+            background-color: rgb(0, 60, 179);
+            color: whitesmoke;
+            border: solid whitesmoke 3px;
+        }
+        h4{
+            font-family: "Poetsen One", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            color: white;
+        }
+        #member{
+            text-decoration: none;
+            color: rgb(8, 37, 112);
+            size: 5em;
+            background-color: rgb(133, 184, 238);
+        }
+    </style>
+
+</head>
+
+<body style="background-image: url('{% static "images/r4c.jpg" %}');background-repeat:no-repeat;background-size:cover;height:150vh;width: 100%;">
+    <nav class="navbar navbar-expand-md" id="navbar1">
+
+        <div class="box1"><img src="{% static 'images/logo.png' %}" alt="company name" height="80px" width="150px">
+        </div>
+
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#options" type="button">
+            <img src="{% static 'images/tog.png' %}" alt="company name" height="30px" width="30px"
+                style="margin-right: 1%;margin-top: 1%;">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="options" class="collapse navbar-collapse">
+
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a href="{% url 'home' %}" class="nav-link">HOME</a></li>
+
+
+                <li class="dropdown">
+                    <div data-toggle="dropdown">
+                        <a href="" class="nav-link"
+                            style="background-color:rgb(35, 75, 116);color:white; border:solid 2px white; ">
+                            REGISTER</a>
+                    </div>
+                    <div class="dropdown-menu">
+                        <a href="{% url 'reg_TL' %}" class="dropdown-item" style="width: 140px;"><img
+                                src="{% static 'images/t3.png' %}" height="30px" width="30px"
+                                style="margin-right: 1%;margin-top: 1%;">Team Lead</a>
+                        <a href="{% url 'reg_developer' %}" class="dropdown-item" style="width: 140px;"><img
+                                src="{% static 'images/d7.jpeg' %}" height="30px" width="30px"
+                                style="margin-right: 1%;margin-top: 1%;">Developer</a>
+                    </div>
+                </li>
+                <li class="nav-item"><a href="{% url 'loginhome' %}" class="nav-link">LOGIN</a></li>
+            </ul>
+        </div>
+    </nav>
+    <center>
+    <div class="row" style="width: 100%;">
+        <div class="col"></div>
+        <div class="col-md-8">
+
+            <center>
+                <form enctype="multipart/form-data" action="{% url 'register_dev' %}" method="post"
+                    style="margin-top: 30px; text-align: center; color: antiquewhite; background-color:rgb(35, 75, 116);border: solid rgb(72, 68, 88)  5px;border-radius: 10px;">
+                    {% csrf_token %}
+                    <div id="member" style="width: 130px;text-align: left;"><img src="{% static 'images/d7.jpeg' %}" height="30px" width="30px">&nbsp;Developer
+                    </div>
+                    <div class="container">
+                        {% for message in messages %}
+                        <div class="alert alert-info container" style="text-align: center;">
+                            {{ message }}
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div class="form-group">
+                        <h4>Register with us</h4>
+                    </div>
+                    <div class="row row-cols-1 row-cols-lg-2">
+                        <div class="col" style="border-right: 1px solid white;">
+                            <div class="form-group" style="margin-left: 5%;margin-right: 5%;">
+                                <input type="text" class="form-control" placeholder="First Name" id="firstname"
+                                    name="fname">
+                                <small id="pfirstname" class="text-danger"></small>
+                            </div>
+                            <div class="form-group" style="margin-left: 5%;margin-right: 5%;">
+                                <input type="text" class="form-control" placeholder="Last Name" id="lastname"
+                                    name="lname">
+                                <small id="plastname" class="text-danger"></small>
+                            </div>
+                            <div class="form-group" style="margin-left: 5%;margin-right: 5%;">
+                                <textarea placeholder="Address" class="form-control" id="uaddr" name="addr"></textarea>
+                                <small id="paddr" class="text-danger"></small>
+                            </div>
+                            <div class="form-group" style="margin-left: 5%;margin-right: 5%;">
+                                <input type="text" class="form-control" placeholder="User Name" id="uname" name="uname">
+                                <small id="pname" class="text-danger"></small>
+                            </div>
+
+                            <div class="form-group" style="margin-left: 5%;margin-right: 5%;">
+                                <input type="email" class="form-control" placeholder="E_mail Id" id="uemail"
+                                    name="email">
+                                <small id="pemail" class="text-danger"></small>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group" style="margin-left: 5%;margin-right: 5%;">
+                                <input type="text" class="form-control" placeholder="Mobile Number" id="umob"
+                                    name="number">
+                                <small id="pmob" class="text-danger"></small>
+                            </div>
+                            <label style="color: rgb(241, 245, 245);">The highest level of education you have
+                                completed:</label>
+                            <div class="form-group" style="margin-left: 5%;margin-right: 5%;">
+
+                                <select class="form-control" id="ucourse" name="course">
+                                    <option value="SSLC">SSLC</option>
+                                    <option value="PlusTwo">+2</option>
+                                    <option value="Degree">Degree</option>
+                                    <option value="Masters">Masters</option>
+                                    <option value="B-Tech">B-Tech</option>
+                                    <option value="M-Tech">M-Tech</option>
+                                </select>
+                                <small id="pcourse" class="text-danger"></small>
+                            </div>
+                            <label style="color: rgb(243, 247, 247);">Attach your certificates here</label>
+                            <div class="form-group" style="margin-left: 5%;margin-right: 5%;">
+                                <input type="file" class="form-control" id="ucertificate" name="file"
+                                    accept="uploads/*">
+                                <small id="pcertificate" class="text-danger"></small>
+                            </div>
+
+
+                            <label style="color: rgb(239, 245, 245);">Select Department to Apply</label>
+                            <div class="form-group" style="margin-left: 5%;margin-right: 5%;">
+                                <select class="form-control" id="udepartment" name="dept">
+                                    <option value="PYTHON">PYTHON</option>
+                                    <option value="DigitalMarketing">DIGITAL MARKETING</option>
+                                    <option value="JAVA">JAVA</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="hidden" value="3" class="" name="utype">
+                    <input type="hidden" value="0" class="" name="ustatus">
+                    <input type="hidden" class="" name="assign">
+                    <input type="hidden" class="" name="Epwd">
+
+
+
+
+                    <br>
+                    <div>
+                        <button class="btn btn-success" type="submit">
+                            REGISTER
+                        </button><br><br>
+
+                    </div>
+                </form>
+
+
+                <h1 id="h"></h1>
+            </center>
+        </div>
+        <div class="col"></div>
+    </div>
+</center>
+</body>
+
+</html>

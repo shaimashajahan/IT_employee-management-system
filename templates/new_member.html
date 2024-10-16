@@ -1,0 +1,73 @@
+{% extends 'navbar_admin.html' %}
+{% block content %}
+{% load static %}
+
+
+<div style="text-align: center;background-color:rgb(197, 209, 219);border: solid rgb(220, 228, 236)  2px;">
+    {% for message in messages %}
+    <div class="alert alert-warning container" style="text-align: center;">
+        {{ message }}
+    </div>
+    {% endfor %}
+    {% if cou == 0 %}
+    <h4 style="margin-top: 0%;">No Member Request</h2><br>
+    {% else %}
+    <center>
+        <h4 style="color: rgb(234, 234, 235);text-align: center;background-color:rgb(64, 77, 94) ;border: solid 2px rgb(216, 208, 230);"
+        class="pt-2 pb-2"> NEW MEMBER REQUEST
+    </h4>    </center>
+    <table class="table table-responsive table-stripped table-hover p-4">
+        <tr
+        style="background-color:rgb(186, 204, 219);border: solid rgb(243, 239, 248) 2px;">
+            <th>NAME</th>
+            <th>EMAIL ID</th>
+            <th>ADDRESS</th>
+            <th>NUMBER</th>
+            <th>COURSE</th>
+            <th>CERTIFICATION</th>
+            <th>APPLY FOR</th>
+            <th>DEPARTMENT</th>
+            <th>ACTION</th>
+        </tr>
+        <tbody>
+            {% for m in member %}
+            {% if m.user.status == '0' %}
+            <tr style="background-color:rgb(222, 228, 245);border: solid rgb(243, 239, 248) 2px;">
+                <td>{{ m.user.first_name }}&nbsp;{{ m.user.last_name }}</td>
+                <td>{{ m.user.email}}</td>
+                <td>{{ m.address }}</td>
+                <td>{{ m.number }}</td>
+                <td>{{ m.course }}</td>
+                <td><a href="{% url 'open_certificate' m.id %}"><button class="btn btn-outline-info">View
+                            Certificates</button></a></td>
+                <td>
+                    {% if m.user.user_type == '2' %}
+                    <label for="">TEAM LEAD</label>
+                    {% else %}
+                    <label for="">DEVELOPER</label>
+                    {% endif %}
+                </td>
+                <td>{{ m.department }}</td>
+
+                <td>
+
+                    <a href="{% url 'approve' m.user.id %}"><button class="btn btn-outline-success">
+                            APPROVE </button></a><br><br>
+                    <a href="{% url 'reject' m.id %}"><button class="btn btn-outline-danger">
+                            &nbsp;&nbsp;REJECT&nbsp;&nbsp </button></a><br>
+                </td>
+
+            </tr>
+            {% endif %}
+
+            {% endfor %}
+        </tbody>
+
+
+    </table>
+    {% endif %}
+
+</div>
+
+
+{% endblock %}

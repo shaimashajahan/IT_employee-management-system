@@ -1,0 +1,40 @@
+{% extends 'navbar_TL.html' %}
+{% block content %}
+{% load static %}
+ <div style="text-align: center;">
+    
+    <h4 style="color: rgb(234, 234, 235);text-align: center;background-color:rgb(64, 77, 94) ;border: solid 2px rgb(216, 208, 230);"
+    class="pt-2 pb-2"> View Developers
+</h4>
+        <center>
+        <table class="table table-responsive table-stripped table-hover">
+            <tr class="bg-light">
+                <th></th>
+                <th>NAME</th>
+                <th>EMAIL ID</th>
+                <th>ADDRESS</th>
+                <th>NUMBER</th>
+                <th>COURSE</th>
+                <th>CERTIFICATION</th>
+                <th>DEPARTMENT</th>
+            </tr>
+            <tbody>
+                {% for d in team_user %}
+                <tr class="table-secondary">
+                    <td><img src="{% static 'images/d7.jpeg' %}" height="30px" width="30px" style="margin-top: 1%;"></td>
+                    <td>{{ d.user.username }}</td>
+                    <td>{{ d.user.email}}</td>
+                    <td>{{ d.address }}</td>
+                    <td>{{ d.number }}</td>
+                    <td>{{ d.course }}</td>
+                    <td><a href="{% url 'open_certificate' d.id %}"><button class="btn btn-outline-dark">View
+                                Certificates</button></a></td>
+                    <td>{{ d.department }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </center>
+
+    </div>
+{% endblock %}

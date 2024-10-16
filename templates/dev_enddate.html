@@ -1,0 +1,35 @@
+{% extends 'navbar_developer.html' %}
+{% block content %}
+{% load static %}
+
+<div style="display:flex;margin-left: 1px;">
+
+    <center>
+        <div style="margin-top: 50px;" class="container" style="text-align: center;">
+          <div class="row" style="margin: auto;">
+            <div class="col">
+              <table class="table table-responsive table-stripped table-hover">
+                <tr class="table text-danger" style="background-color: rgb(173, 176, 212);">
+                  <th>MODULES PENDING</th>
+                  <th>CROSSED DATE</th>
+                </tr>
+                <tbody>
+                  {% for m in modu %}
+                  {% if uid == m.u_member.user.id %}
+                  <tr class="table" style="background-color: rgb(202, 201, 248);">
+                    <td>{{ m.module_name }}</td>
+                    <td>{{ m.end_date }}</td>
+                  </tr>
+                  {% endif %}
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          
+    
+          </div>
+        </div>
+      </center>
+</div>
+
+{% endblock %}

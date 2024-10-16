@@ -1,0 +1,33 @@
+{% extends 'navbar_TL.html' %}
+{% block content %}
+{% load static %}
+<h4
+  style="color: rgb(234, 234, 235);text-align: center;background-color:rgb(64, 77, 94) ;border: solid 2px rgb(216, 208, 230);margin-bottom: 0%;"
+  class="pt-2 pb-2">UPDATE PROJECT WORK  PROGRESS
+</h4>
+<div class="row container">
+    <div class="col"></div>
+<center>
+<div class="col" style="background-color: rgb(238, 241, 241);margin-top: 100px;">
+<form enctype="multipart/form-data" action="{% url 'editworkfun' prtl.id %}" method="post">
+    {% csrf_token %}
+    <!-- <div class="form-group bg-warning" style="padding-top: 30px;">
+       <span> {{ pr.topic }}</span>
+    </div> -->
+    <button class="btn mb-3" style="width: 100%;height: 40px;color: rgb(17, 59, 22);background-color: aquamarine;"><strong>{{ prtl.project_name.topic }}</strong> </button>
+    <label style="color: darkslategrey;"> Update work progress</label>
+    <div class="form-group" style="margin-left: 10%;margin-right: 10%;">
+        <input type="file" class="form-control" name="file" accept="uploads/*">
+    </div>
+    <div>
+        <button class="btn btn-warning mb-5" type="submit">
+            UPDATE
+        </button>
+    </div>
+</form>
+</div> 
+</center>
+<div class="col"></div>
+
+</div>
+{% endblock %}

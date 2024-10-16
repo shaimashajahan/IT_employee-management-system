@@ -1,0 +1,97 @@
+{% extends 'navbar_TL.html' %}
+{% block content %}
+{% load static %}
+
+<h4
+  style="color: rgb(234, 234, 235);text-align: center;background-color:rgb(64, 77, 94) ;border: solid 2px rgb(216, 208, 230);margin-bottom: 0%;"
+  class="pt-2 pb-2"> MODULES
+</h4>
+<div>
+  <center>
+
+      {% for message in messages %}
+      <strong>
+          <h4 style="background-color: rgb(4, 64, 68);color: aliceblue;padding: 15px;">{{ message }}</h4>
+      </strong>
+      {% endfor %}
+
+  </center>
+</div>
+
+<!-- <div style="margin-top: 50px;" class="container-fluid" style="text-align: center;">
+  <center>
+
+    <table class="table table-responsive table-stripped table-hover">
+      <tr class="table" style="background-color: rgb(173, 176, 212);">
+        <th>MODULE NAME</th>
+        <th>PROJECT NAME</th>
+        <th>REQUIREMENTS</th>
+        <th>ATTACHMENT</th>
+        <th>Action</th>
+      </tr>
+      <tbody>
+        {% for m in mo %}
+        {% if m.pro.team_lead.user.id == uid %}
+
+        <tr class="table" style="background-color: rgb(202, 201, 248);">
+          <!-- <td>{{ m.u_member.user.username }}</td> -->
+<!-- <td>{{ m.module_name }}</td>
+
+          <td>{{ m.pro.project_name.topic }}</td>
+          <td>{{ m.requirement }}</td>
+          <td><a href="{% url 'open_attachment' m.id %}"> <img src="{% static 'images/at.png' %}" height="30px"
+                width="30px"></a></td>
+
+          <td><a href="{% url 'view_moduledev' m.id %}">View developers</a></td>
+          {% endif %}
+
+
+        </tr>
+
+        {% endfor %}
+
+      </tbody>
+    </table>
+  </center>
+
+
+</div> --> 
+<div style="width: 97%;">  
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
+  {% for m in mo %}
+  {% if m.pro.team_lead.user.id == uid %}
+  <div class="col mb-4" style="margin-right: 0%;">
+    <div class="card" style="text-align: center;background-color: rgb(252, 254, 255);margin-top: 2%;margin-left: 2%;height:100%;">
+      <div class="card-body" style="margin-right: 0%;">
+        <h4 class="card-title" style="padding-top: 0%;text-align: center;color: rgb(240, 146, 5);">
+          {{ m.module_name }} &nbsp;&nbsp; 
+        </h4>
+        <p style="text-align: left;text-align: center;background-color: aquamarine;"><b>{{ m.pro.project_name.topic }}</b></p>
+        <p style="text-align: left;color: rgb(6, 6, 102);margin-top: 15px;"><b>Requirements </b> &nbsp;&nbsp;:
+          &nbsp;&nbsp;{{ m.requirement }}</p>
+        <p style="text-align: left;color: rgb(6, 6, 102);"><b> Start Date </b>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;
+          {{ m.start_date }}</p>
+        <p style="text-align: left;color: rgb(6, 6, 102);"><b> End Date </b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
+          &nbsp;&nbsp;{{ m.end_date }}</p>
+          <p style="text-align: right;color: rgb(6, 6, 102);"><a href="{% url 'open_attachment' m.id %}"> <img src="{% static 'images/at.png' %}" height="30px"
+            width="30px"></a>
+          </p>
+      </div>
+      <div class="modal-footer">
+        <h5 style="text-align: left;"><img src="{% static 'images/d7.jpeg' %}" height="30px" width="30px" style="margin-top: 1%;"></h5>
+        {% for pr in mod %}
+        {% if m.id == pr.modu.id %}
+        <span><b>{{ pr.dev.user.username }} &nbsp;</b></span>
+        {% endif %}
+        {% endfor %}
+
+      </div>
+    </div>
+
+  </div>
+  {% endif %}
+  {% endfor %}
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'navbar_admin.html' %}
+{% block content %}
+{% load static %}
+<h4
+  style="color: rgb(234, 234, 235);text-align: center;background-color:rgb(64, 77, 94) ;border: solid 2px rgb(216, 208, 230);margin-bottom: 0%;"
+  class="pt-2 pb-2"> EMPLOYEE WORK PROGRESS
+</h4>
+<center>
+  <div style="background-image:url('{% static "images/employee3.jpg" %}');background-size: cover;background-repeat:
+    no-repeat;width: 100%; border: solid rgb(220, 228, 236) 2px ;margin-bottom: 0%;height:650px;">
+    <div class="row" style="width: 100%;">
+      <div class="col-md-2"></div>
+
+      <div class="col-md-8">
+        {% for t in tl %}
+        {% if t.user.user_type == '2' and t.user.status == '2' %}
+        <br>
+        <div id="tld">
+          <a href="{% url 'progresspro' t.id %}" id="tla">
+            <h6 class="pt-0" id="tl"> <img src="{% static 'images/t3.png' %}" height="25px" width="25px" style="margin-top: 1%;">&nbsp;{{ t.user.first_name|upper }}&nbsp; {{ t.user.last_name|upper }} </h6>
+          </a>
+        </div>
+        {% for d in tl %}
+
+        {% if d.user.user_type == '3' and d.user.status == '3' and d.team.id == t.user.id %}
+        <div id="tlm">
+          <a href="{% url 'admin_module' d.user.id %}" id="tla">
+            <h6 id="td"> {{ d.user.first_name|upper }} &nbsp; {{ d.user.last_name|upper }}  {{ d.user.id }}  </h6>
+        </div>
+        {% endif %}
+
+        {% endfor %}
+        {% endif %}
+        {% endfor %}
+      </div>
+      <div class="col-md-2"></div>
+
+    </div>
+  </div>
+</center>
+{% endblock %}

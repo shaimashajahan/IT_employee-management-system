@@ -1,0 +1,58 @@
+{% extends 'navbar_admin.html' %}
+{% block content %}
+{% load static %}
+
+<h4 style="color: rgb(234, 234, 235);text-align: center;background-color:rgb(64, 77, 94) ;border: solid 2px rgb(216, 208, 230);margin-bottom: 0%;"
+    class="pt-2 pb-2"> ASSIGN PROJECT
+</h4>
+<center>
+
+<div class="row" style="width: 100%;">
+    <div class="col"></div>
+    <div class="col-md-6" style="text-align: center;background-color:rgb(46, 65, 82);border: solid rgb(57, 73, 88)  2px;height: 630px;">
+        
+
+                {% for message in messages %}
+                <div class="alert alert-info container" style="text-align: center;">
+                    {{ message }}
+                </div>
+                {% endfor %}
+                <form enctype="multipart/form-data" action="proj_assignfun" method="post" style="margin-top: 100px;">
+                    {% csrf_token %}
+                    <table class="table table-responsive table-stripped table-hover">
+                        <tr class="table" style="background-color: rgb(120, 130, 247);">
+                            <th>PROJECT TOPIC</th>
+                            <th>TEAMLEAD NAME</th>
+                        </tr>
+                        <tbody>
+                            <tr class="table" style="background-color: rgb(222, 224, 238);">
+                                <td> <select name="sel1" style="height: 50px;text-align: center;width: 239px;">
+                                        {% for p in proj %}
+                                        <option value="{{ p.id }}" selected>{{ p.topic }}</option>
+                                        {% endfor %}
+                                    </select></td>
+                                <td> <select name="sel2" style="height: 50px;text-align: center;width:239px; ">
+                                        {% for t in tl %}
+                                        {% if t.user.user_type == '2' and t.user.status == '2' %}
+                                        <option value="{{ t.user.id }}" selected>{{ t.user.username }}</option>
+                                        {% endif %}
+                                        {% endfor %}
+                                    </select>
+
+                            </tr>
+                            <tr class="table" style="background-color: rgb(222, 224, 238);;text-align: center;">
+                                <td colspan="2"><a href=""><button class="btn btn-info">
+                                            ASSIGN</button></a></td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </form>
+
+    </div>
+    <div class="col"></div>
+</div>
+</center>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'navbar_admin.html' %}
+{% block content %}
+{% load static %}
+<h4
+  style="color: rgb(234, 234, 235);text-align: center;background-color:rgb(64, 77, 94) ;border: solid 2px rgb(216, 208, 230);margin-bottom: 0%;"
+  class="pt-2 pb-2"> PROJECT WORK PROGRESS
+</h4>
+<div style="background-color:rgb(197, 209, 219);border: solid rgb(220, 228, 236)  2px;height: 630px;">
+ <div>
+  <table class="table table-responsive" style="border: rgb(20, 20, 85) solid 2px;">
+    <tr style="background-color:rgb(186, 204, 219);width: 100%;">
+      <th style="border-right: 2px solid black;">TEAM LEAD</th>
+      <th style="border-right: 2px solid black;">PROJECT</th>
+      <th colspan="10">WORK PROGRESS</th>
+   
+    </tr>
+    <tbody>
+
+      {% for t in TL %}
+      <tr>
+        <td style="border-right: 2px solid black;"><a href="" style="background-color:rgb(73, 161, 196);text-decoration: none;color: antiquewhite;padding: 5px;padding-top: 0%;">
+          <img src="{% static 'images/t3.png' %}" height="20px" width="20px">&nbsp;{{ t.user.username }} 
+      </a>
+          
+        </td><td style="border-right: 2px solid black;"></td>
+
+      <tr>{% for p in prtl %}
+        {% if p.team_lead.id == t.id %}
+        
+      <tr>
+        <td style="border-right: 2px solid black;"></td>
+        <td style="border-right: 2px solid black;"><span style="background-color: rgb(22, 170, 22);padding: 4px;border-radius: 7px;color: antiquewhite;">{{ p.project_name.topic }}</span></td>
+        {% for r in prp %}
+        {% if p.id == r.p_tl.id %}
+        <td><a href="{% url 'open_Pprogress' r.id %}"><button class="btn btn-warning" type="submit">
+              {{ r.date }}
+            </button></a></td>
+
+        {% endif %}
+        {% endfor %}
+      </tr>
+      {% endif %}
+      {% endfor %}
+      </tr>
+      </tr>
+      {% endfor %}
+      <tr>
+
+      </tr>
+
+    </tbody>
+  </table>
+ </div>
+</div>
+{% endblock %}

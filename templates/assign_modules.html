@@ -1,0 +1,42 @@
+{% extends 'navbar_TL.html' %}
+{% block content %}
+{% load static %}
+<div class="container">
+
+<form enctype="multipart/form-data" action="{% url 'add_module' %}" method="post" style="text-align: center;background-color:rgb(197, 209, 219);border: solid rgb(35, 75, 116)  2px;margin-top: 10px;">
+    {% csrf_token %}
+    
+    <div class="form-group">
+        <h3 style="color: rgb(35, 75, 116);padding-top: 30px;">Assign Module</h3>          
+    </div>
+    <div class="form-group" style="margin-left: 10%;margin-right: 10%;">
+        <input type="text" class="form-control" placeholder="Module Name" name="module_name">
+    </div>
+    <div class="form-group" style="margin-left: 10%;margin-right: 10%;">
+        <label style="color: darkslategrey;">Attachment</label>
+        <input type="file" class="form-control" name="file" accept="uploads/*">
+    </div>
+    <label style="color: darkslategrey;">Start Date</label>
+    <div class="form-group" style="margin-left: 10%;margin-right: 10%;">
+        <input type="date" class="form-control" placeholder="Start date" id="tname" name="sdate">
+    </div>
+    <label style="color: darkslategrey;">End Date</label>
+    <div class="form-group" style="margin-left: 10%;margin-right: 10%;">
+        <input type="date" class="form-control" placeholder="End date" id="tname" name="edate">
+    </div>
+    <label style="color: darkslategrey;">Select Developer</label>
+    <div class="form-group" style="margin-left: 10%;margin-right: 10%;">
+        <select class="form-control" name="select_dev">
+            {% for d in developer %}
+            {% if d.user.TL == uname %}
+            <option value="{{ d.id }}">{{ d.user.username }}</option>
+            {% endif %}
+            {% endfor %}
+        </select>
+    </div>
+        <button class="btn btn-primary" type="submit">
+            ASSIGN
+        </button><br> <br>
+</form>
+</div>
+{% endblock %}

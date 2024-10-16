@@ -1,0 +1,30 @@
+{% extends 'navbar_developer.html' %}
+{% block content %}
+{% load static %}
+<body style="background-image: url('{% static "images/workin.avif" %}'); background-size: cover; background-repeat: no-repeat;"> 
+
+    <div>
+        <center>
+            
+            <strong><h5 style="color: aliceblue;background-color: rgb(104, 5, 99);">WORK PROGRESS</h5></strong> 
+            
+        </center>
+    </div>
+
+<div class="container">
+    <div class="row row-cols-2 row-cols-md-5 row-cols-lg-6 mt-5" style="width: 100%;padding-top:0%;">
+        {% for m in md %}
+        <a href="{% url 'dev_viewprogress' m.modu.id %}" style="text-decoration: none;">
+            <div class="col">
+                <div class="card bg-transparent border-0" style="text-align: center;">
+                    <center><img src="{% static 'images/workp1.png' %}" alt="project_name" class="card-image-top
+         img" height="100px" width="100px"></center>
+                    <h6 id="tl" class="card-title" style="color: rgb(63, 5, 65);">{{ m.modu.module_name }}</h6>
+               </div>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</div>
+</body>
+{% endblock %}

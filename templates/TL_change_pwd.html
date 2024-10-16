@@ -1,0 +1,44 @@
+{% extends 'navbar_TL.html' %}
+{% block content %}
+{% load static %}
+<h4
+  style="color: rgb(234, 234, 235);text-align: center;background-color:rgb(64, 77, 94) ;border: solid 2px rgb(216, 208, 230);margin-bottom: 0%;"
+  class="pt-2 pb-2">CHANGE PASSWORD
+</h4>
+<div class="row row-cols-1 row-cols-lg-3">
+<div class="col"></div>
+<div class="col">
+    <div style="background-color: rgb(238, 241, 241);margin-top: 50px;">
+        <form action="{% url 'custom_password_change_view' %}" method="post">
+            {% csrf_token %}
+            <h6 style="text-align: center;margin-top: 50px;color:red;">
+                {% for message in messages %}
+                <div class="alert alert-danger" style="text-align: center;">
+                    {{ message }}
+                </div>
+                {% endfor %}
+                {{ error_message }}
+            </h6>
+            
+            
+            <div class="form-group" style="margin-left: 10%;margin-right: 10%;padding-top: 50px;">
+                <input type="password" class="form-control" placeholder="Enter The Existing Password  " name="Mpwd">
+            </div>
+            <div class="form-group" style="margin-left: 10%;margin-right: 10%;">
+                <input type="password" class="form-control" placeholder="Enter The New Password  " name="Npwd">
+            </div>
+            <div class="form-group" style="margin-left: 10%;margin-right: 10%;">
+                <input type="password" class="form-control" placeholder="Confirm Password  " name="Cpwd">
+            </div>
+            <div style="text-align: center;">
+                <button class="btn btn-warning mb-5" type="submit">
+                    UPDATE
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="col"></div>
+
+</div>
+{% endblock %}

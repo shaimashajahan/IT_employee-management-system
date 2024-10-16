@@ -1,0 +1,63 @@
+{% extends 'navbar_developer.html' %}
+{% block content %}
+{% load static %}
+
+<body style="background-image: url('{% static "images/d11.jpg" %}'); background-size: cover; background-repeat:
+    no-repeat;height:100vh;">
+    <div class="row" style="width:100%">
+        <div class="col"></div>
+    <div class="col-md-6" style="background-color:rgb(247, 204, 230);">
+        <center>
+            <div class="row row-cols-1 row-cols-md-1 row-cols-lg-1">
+                
+                <div class="container">
+                    {% for message in messages %}
+                    <div class="alert alert-info container" style="text-align: center;">
+                        {{ message }}
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="col mt-1">
+                    <div class="card bg-dark" style="color:rgb(252, 241, 248);border: 10px solid rgb(129, 126, 126);border-radius:15px;">
+                        <div class="card-body">
+                            <img src="{% static 'images/picon.jpg' %}" height="30px" width="30px"
+                                style="margin-top: 5%;">
+                            <h4 class="card-title mb-4 pt-2">{{ m.user.username }}</h4>
+                            <div class="row">
+                                <div class="col-md-3"></div>
+                                <div class="col-md-8">
+                            <p class="card-text" style="text-align: left;">First Name &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ m.user.first_name }}</p>
+                            <p class="card-text"style="text-align: left;">Last Name &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ m.user.last_name }}
+                            </p>
+                            <p class="card-text"style="text-align: left;">Address &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ m.address }}</p>
+                            <p class="card-text"style="text-align: left;">Email &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                :&nbsp; {{ m.user.email }}</p>
+                            <p class="card-text"style="text-align: left;">Contact Number :
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ m.number }}</p>
+                            <p class="card-text"style="text-align: left;">Course Name &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;{{ m.course }}</p>
+                            <p class="card-text"style="text-align: left;">Department &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ m.department }}</p>
+                    
+                        </div>
+                        <div class="col"></div>
+                        </div>
+                            <p class="card-text mb-3 mt-3">
+                                <a href="{% url 'open_certificate' m.id %}"><button class="btn btn-outline-light">View
+                                        Certificates</button></a>
+                                <a href="{% url 'devprofile_edit' m.id %}"><button class="btn btn-outline-light">&nbsp;&nbsp;&nbsp;&nbsp; Edit
+                                        Profile &nbsp;&nbsp;&nbsp;&nbsp;</button></a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </center>
+    </div>
+    <div class="col"></div>
+
+    </div>
+</body>
+
+
+
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'navbar_admin.html' %}
+{% block content %}
+{% load static %}
+<h4 style="color: rgb(234, 234, 235);text-align: center;background-color:rgb(64, 77, 94) ;border: solid 2px rgb(216, 208, 230);margin-bottom: 0%;"
+class="pt-2 pb-2"> DEVELOPER DETAILS
+</h4>
+    <div style="text-align: center;">
+        {% for message in messages %}
+        <div class="alert alert-info container" style="text-align: center;">
+            <h4> {{ message }}</h4>
+        </div>
+        {% endfor %}
+      
+        <table class="table table-responsive table-stripped table-hover">
+            <tr style="background-color:rgb(186, 204, 219);border: solid rgb(243, 239, 248) 2px;">
+                <th>NAME</th>
+                <th>EMAIL ID</th>
+                <th>ADDRESS</th>
+                <th>NUMBER</th>
+                <th>COURSE</th>
+                <th>CERTIFICATION</th>
+                <th>DEPARTMENT</th>
+                <th>ACTION</th>
+            </tr>
+            <tbody>
+                {% for d in developer %}
+                {% if d.user.user_type == '3' and d.user.status == '3' %}
+                <tr style="background-color:rgb(233, 237, 241);border: solid rgb(248, 246, 250) 2px;">
+                    <td>{{ d.user.first_name }}&nbsp;{{ d.user.last_name }}</td>
+                    <td>{{ d.user.email}}</td>
+                    <td>{{ d.address }}</td>
+                    <td>{{ d.number }}</td>
+                    <td>{{ d.course }}</td>
+                    <td><a href="{% url 'open_certificate' d.id %}"><button class="btn btn-outline-dark">View
+                                Certificates</button></a></td>
+                    <td>{{ d.department }}</td>
+                    <td>
+                        <a href="{% url 'change_developer' d.user.id %}"><button class="btn btn-info">
+                                Change To TL</button></a>
+                        <br><br>
+                        <a href="{% url 'deletedev' d.id %}"><button class="btn btn-danger">
+                                DELETE</button></a>
+                    </td>
+                </tr>
+                {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}    

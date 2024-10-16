@@ -1,0 +1,250 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
+        #hed {
+            /* text-align: center;  */
+            /* padding-top: 18px; */
+            /* color:rgb(102, 102, 102); */
+            font-family: "Roboto Mono", monospace;
+            font-optical-sizing: auto;
+            font-weight: 1000;
+            font-style: normal;
+            size: 5em;
+            text-emphasis: 5em;
+        }
+
+        #para {
+
+            font-family: sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 700;
+            font-style: normal;
+            size: 1em;
+            text-align: justify;
+
+
+        }
+
+        #navbar1 a {
+            text-decoration: none;
+            color: white;
+            size: 5em;
+            background-color: rgb(35, 75, 116);
+        }
+
+        #navbar1 a:hover {
+            background-color: rgb(0, 60, 179);
+            color: whitesmoke;
+            border: solid whitesmoke 3px;
+        }
+        h4{
+            font-family: "Poetsen One", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+    </style>
+
+</head>
+
+<body style="background-color: rgb(231, 234, 247);background-repeat:no-repeat;background-size:cover;width: 100%;">
+    <nav class="navbar navbar-expand-md" id="navbar1" style="border-bottom: 1px solid whitesmoke;">
+
+        <div class="box1"><img src="{% static 'images/logo.png' %}" class="img-fluid" alt="company name" height="50px"
+                width="140px">
+            <!-- <h4 style="color:rgb(35, 75, 116)" id="hlabel">I.T.E.M.S</h4> -->
+        </div>
+
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#options" type="button">
+            <img src="{% static 'images/tog.png' %}" alt="company name" height="30px" width="30px"
+                style="margin-right: 1%;margin-top: 1%;">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="options" class="collapse navbar-collapse">
+
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a href="{% url 'home' %}" class="nav-link"
+                        style="background-color:rgb(35, 75, 116);color:white; border:solid 2px white; ">HOME</a></li>
+                <li class="dropdown">
+                    <div data-toggle="dropdown">
+                        <a href="" class="nav-link"> REGISTER</a>
+                    </div>
+                    <div class="dropdown-menu">
+                        <a href="{% url 'reg_TL' %}" class="dropdown-item" style="width: 140px;"><img
+                                src="{% static 'images/t3.png' %}" height="30px" width="30px"
+                                style="margin-right: 1%;margin-top: 1%;">Team Lead</a>
+                        <a href="{% url 'reg_developer' %}" class="dropdown-item" style="width: 140px;"><img
+                                src="{% static 'images/d7.jpeg' %}" height="30px" width="30px"
+                                style="margin-right: 1%;margin-top: 1%;">Developer</a>
+                    </div>
+                </li>
+                <li class="nav-item"><a href="{% url 'loginhome' %}" class="nav-link">LOGIN</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="card">
+        <img src="{% static "images/wimag.jpg" %}" class="card-img" alt="Image description">
+        <div class="card-img-overlay">
+            <h3 id="hed" class="text-warning bg-light" style="align-content: center;text-align: center; width: 100%;">IT
+                EMPLOYEE MANAGEMENT SYSTEM</h3>
+                {% for message in messages %}
+                <div class="alert alert-warning container" style="text-align: center;">
+                    {{ message }}
+                </div>
+                {% endfor %}
+        </div>
+    </div>
+
+    <div id="para" class="container-fluid"
+        style="background-color: rgb(218, 206, 250);  color: rgb(58, 58, 124);padding-top: 20px;padding-bottom: 20px;  border: solid white 1px;">
+        A comprehensive platform designed to streamline and enhance the management of IT employees within
+        organizations. Our user-friendly interface offers an array of features, including employee profiles, performance
+        evaluations, project tracking, and skill assessments. Whether you're tracking project assignments, monitoring
+        performance metrics, or facilitating team
+        communications, It provides the tools you need to optimize your workforce and drive organizational success.
+        Empower your IT team with the resources they need to thrive in an ever-evolving digital landscape. Join us and
+        transform your employee management experience today!
+    </div>
+    <center>
+    <div class="container-fluid">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4">
+            <div class="col mt-2">
+                <img src="{% static "images/projectcc.jpg" %}" alt="" class="img-fluid"
+                    style="height: 200px;width:300px;">
+            </div>
+            <div class="col mt-2">
+                <img src="{% static "images/taskc.jpg" %}" alt="" class="img-fluid" style="height: 200px;width:300px;">
+            </div>
+            <div class="col mt-2">
+                <img src="{% static "images/performance.jpg" %}" alt="" class="img-fluid"
+                    style="height: 200px;width:300px;">
+            </div>
+            <div class="col mt-2">
+                <img src="{% static "images/streamline.jpg" %}" alt="" class="img-fluid"
+                    style="height: 200px;width:300px;">
+            </div>
+
+            <div class="col mt-2">
+                <img src="{% static "images/Empower.jpeg" %}" alt="" class="img-fluid"
+                    style="height: 200px;width:300px;">
+            </div>
+            <div class="col mt-2">
+                <img src="{% static "images/simplify.webp" %}" alt="" class="img-fluid"
+                    style="height: 200px;width:300px;">
+            </div>
+
+            <div class="col mt-2">
+                <img src="{% static "images/potential.webp" %}" alt="" class="img-fluid"
+                    style="height: 200px;width:300px;">
+            </div>
+
+            <div class="col mt-2">
+                <img src="{% static "images/efficiencyc.jpg" %}" alt="" class="img-fluid"
+                    style="height: 200px;width:300px;">
+            </div>
+        </div>
+
+
+    </div>
+</center>
+    <div class="row bg-muted"
+        style="margin: auto;border: 1px solid rgb(243, 242, 245);background-color: rgb(219, 233, 243);">
+        <div class="col text-dark" style="text-align: center;"><br>
+            <img class="img-fluid" src="{% static "images/profile.jpeg" %}" alt="" style="height: 50px;width: 50px;">
+            <h5>Employee Profile Management</h5>
+            <p>
+                A centralized repository for storing and managing employee information, including personal details, job
+                roles, skills, and qualifications.
+
+            </p>
+        </div>
+        <div class="col text-dark" style="text-align: center;"><br>
+            <img class="img-fluid" src="{% static "images/performan.png" %}" alt="" style="height: 50px;width: 50px;">
+            <h5>Performance Management</h5>
+            <p>
+                Tools for setting goals, evaluating performance, and providing day to day feedback, including conducting
+                performance reviews, creating development plans, and tracking progress.
+
+
+            </p>
+        </div>
+        <div class="col text-dark" style="text-align: center;"><br>
+            <img class="img-fluid" src="{% static "images/pro.webp" %}" alt="" style="height: 50px;width: 50px;">
+            <h5>Project Management</h5>
+            <p>Features for creating and assigning projects and tasks, and track progress in real-time, ensuring that
+                projects are completed on time and within budget.
+
+            </p>
+        </div>
+        <div class="col text-dark" style="text-align: center;"><br>
+            <img class="img-fluid" src="{% static "images/com.webp" %}" alt="" style="height: 50px;width: 50px;">
+            <h5>Communication and Collaboration</h5>
+            <p> Tools for team communication, collaboration, and knowledge sharing, promoting a culture of transparency,
+                innovation, and productivity.
+
+            </p>
+        </div>
+    </div>
+    <center>
+    <footer style="width: 97.5%;">
+    <div class="text-white " style="background-color: rgb(66, 66, 134);border-top: solid white 1px;">
+        <div class="row p-5">
+            <div class="col" style="text-align: left;">
+                                <header>                                   
+                                    <h5 class="bt_bb_headline_tag text-warning">
+                                        <b>Employee Connect</b>
+                                    </h5>
+                                </header>
+                               
+                                <div>+91 98337 21102</div>
+                                <div>connect@employeeconnect.in</div>
+                                <div>sanjayrawat@employeeconnect.in</div>
+            </div>
+            <div class="col" style="text-align: left;">
+                    <header><h5 class="bt_bb_headline_tag text-warning">
+                        <b>Explore Your Solutions</b></h5>
+                    </header>
+                    <div>Virtual Solution</div>
+                    <div>Consulting Services</div>
+                    <div>Sales &amp; Customer Experience</div>
+                    <div>People &amp; Leadership Development</div>
+            </div>
+            <div class="col" style="text-align: left;">
+                <header><h5 class="text-warning">
+                    <b>Resources</b></h5>
+                </header>
+                <div>Blogs</div>
+                <div>Webinars</div>
+                <div>Videos</div>                   
+            </div>
+        </div>
+    </div>
+    <div class="row p-4 text-white" style="background-color: rgb(139, 128, 202);width: 100%;border-top: solid white 1px;">
+        <div class="col" style="text-align: left;">
+            <div>Copyright 2021 by Employee Connect. All rights reserved.</div>
+        </div>
+        <div class="col" style="text-align: right;">
+            <div>Website Developed By Host2Unlimited</div>
+        </div>
+    </div>
+    </footer>
+    </center>
+
+    
+
+
+</body>
+
+</html>

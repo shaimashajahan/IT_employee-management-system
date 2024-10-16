@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+  
+    align-items: center;
+    
+}
+
+.box1{
+    text-align: left;
+    align-items: center;
+    display: flex;
+    width: 40%;
+    
+}
+.sub    {
+    text-align: center;
+    /* padding-top: 35px; */
+    color:rgb(102, 102, 102);
+    font-family: "Roboto Mono", monospace;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  size: 5em;
+    
+}
+#navbar1 ul{
+display: flex;
+list-style-type: none;
+/* padding-top: 10px; */
+
+}
+
+#navbar1 a{
+    text-decoration: none;
+    color:white;
+    margin-left: 10px;
+    padding-left:10px ;
+    padding-right :10px ;
+    /* padding-top: 10px; */
+    padding-bottom: 10px;
+    size: 5em;
+    background-color: rgb(35, 75, 116);
+}
+#navbar1 a:hover{
+background-color:rgb(0, 60, 179);
+color:whitesmoke;
+border: solid whitesmoke 1px;
+}
+
+
+.form{
+    font-family: "Roboto Mono", monospace;
+     font-optical-sizing: auto;
+    font-weight: 700;
+  font-style: normal;
+  size: 1em;
+  color: rgb(24, 46, 68) ;
+  border: solid whitesmoke 2px;
+  /* margin-left: 250px;
+  margin-right: 250px; */
+  background-color: rgb(197, 209, 219);
+}
+
+#head{
+    background-color: rgb(163, 163, 194);
+}
+
+#btn{
+    background-color: green;
+    color: azure;
+}
+
+#upload{
+    color:rgb(24, 46, 68);
+}
+
+#file{
+    color: blue;
+}
+
+
+
+    #text{
+        color: DarkSlateGrey;
+    }
+
+    /* #none{
+        color:DarkRed;
+    } */
+
+    #button{
+        background-color: green;
+        color: lightgrey;
+    }
+  

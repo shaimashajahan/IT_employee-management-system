@@ -1,0 +1,70 @@
+{% extends 'navbar_TL.html' %}
+{% block content %}
+{% load static %}
+
+<!-- <div style="margin-top: 50px;" class="container" style="text-align: center;">
+         <h3 class="text-dark">PROJECT DETAILS</h3> <br>
+         <center>
+    <table class="table table-responsive table-stripped table-hover">
+        <tr class="table-info" >
+          <th>PROJECT TOPIC</th>
+          <th>REQUIREMENTS</th>
+          <th>MODULES</th>
+          <th>GUIDELINES</th>
+          <th>START DATE</th>
+          <th>END DATE</th>
+        </tr>
+        <tbody>
+            {% for pro in p_tl %}
+            {% if uid == pro.team_lead.user.id  %}
+            <tr class="table-secondary">
+                <td>{{ pro.project_name.topic }}</td>
+                <td>{{ pro.project_name.requirement }}</td>
+                <td>{{ pro.project_name.modules }}</td>
+                <td><a href="{% url 'open_project' pro.project_name.id %}"><button class="btn btn-outline-dark">Guidelines</button></a></td>
+                <td>{{ pro.project_name.start_date }}</td>
+                <td>{{ pro.project_name.end_date }}</td>               
+            </tr>
+            {% endif %}
+
+            {% endfor %}
+
+        </tbody>          
+     </table>
+    </center>
+</div> -->
+
+
+<div >
+    <h4
+  style="color: rgb(234, 234, 235);text-align: center;background-color:rgb(64, 77, 94) ;border: solid 2px rgb(216, 208, 230);margin-bottom: 0%;"
+  class="pt-2 pb-2"> PROJECTS
+</h4>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-2" style="margin-right: 0%;height: 600px;">
+        {% for pro in p_tl %}
+        {% if uid == pro.team_lead.user.id  %}
+      <div class="col mb-4" style="margin-right: 0%;">
+        <div class="card" style="text-align: center;background-color: rgb(255, 255, 255);margin-left: 2%;margin-top: 2%;height: 100%;">
+          <div class="card-body" style="margin-right: 0%;">
+            <h5 class="card-title" style="padding-bottom: 2%;text-align: center;background-color: aquamarine;">{{ pro.project_name.topic }} 
+            </h5>
+            <p style="text-align: left;padding-top: 15px;color: rgb(12, 82, 12);"><b> Requirements</b> &nbsp;&nbsp; :&nbsp;&nbsp; <span class="card-text">{{ pro.project_name.requirement }}</span></p>
+            <p style="text-align: left;color: rgb(12, 82, 12);"><b>Modules </b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
+              &nbsp;&nbsp;{{ pro.project_name.modules }}</p>
+            <p style="text-align: left;color: rgb(12, 82, 12);"><b> Start Date </b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;
+              {{ pro.project_name.start_date }}</p>
+            <p style="text-align: left;color: rgb(12, 82, 12);"><b> End Date </b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
+              &nbsp;&nbsp;{{ pro.project_name.end_date }}</p>
+              <h6 style="text-align: right;color: rgb(12, 82, 12);"><a href="{% url 'open_project' pro.project_name.id %}"> <img src="{% static 'images/att.png' %}" height="30px" width="30px"></a>
+              </h6>
+          </div>
+         
+        </div>
+        
+      </div>
+      {% endif %}
+
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'navbar_admin.html' %}
+{% block content %}
+{% load static %}
+<center>
+    <div class="container">
+    <form  enctype="multipart/form-data" action="{%  url 'assignfun' dev.id %}" method="post" style="margin-top: 50px;background-color: rgb(217, 218, 223);padding-bottom: 50px;">
+        {% csrf_token %}
+    <div style="color: rgb(35, 75, 116);;">
+        <div id="para">
+            {% for message in messages %}
+            <div class="alert alert-primary" style="text-align: center;">
+                <h3>{{ message }}</h3>
+            </div>
+            {% endfor %}
+        </div>
+        <h4>ASSIGN TEAD LEAD</h4>
+        <label for="" class="mt-4">Developer Name</label><br>
+        <input type="text" class="form-control ml-5" name="name" value="{{ dev.user.username }}" style="width: 180px;"><br>
+        <label for="">Select Team Lead</label><br>
+        <select name="sel" style="height: 50px;width: 150px;text-align: center;margin-left: 30px;">
+
+            {% for t in tl %}
+            {% if t.user.user_type == '2' and t.user.status == '2' %}
+            <option value="{{ t.user.id }}" selected >{{ t.user.username }}</option>
+            {% endif %}
+            {% endfor %}
+        </select><br><br>
+        <input type="submit" value="ASSIGN" class="btm btn-primary">
+
+    </div>
+    </form>
+</div>
+</center>
+{% endblock %}

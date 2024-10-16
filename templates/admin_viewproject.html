@@ -1,0 +1,101 @@
+{% extends 'navbar_admin.html' %}
+{% block content %}
+{% load static %}
+<h4
+  style="color: rgb(234, 234, 235);text-align: center;background-color:rgb(64, 77, 94) ;border: solid 2px rgb(216, 208, 230);margin-bottom: 0%;"
+  class="pt-2 pb-2"> PROJECTS
+</h4>
+
+<!-- <center>
+<div style="margin-top: 30px;" class="container" style="text-align: center;">
+<table class="table table-responsive table-stripped table-hover" >
+   <tr class="table" style="background-color: rgb(173, 176, 212);" >
+     <th>TOPIC</th>
+     <th>REQUIREMENTS</th>
+     <th>MODULES</th>
+     <th>GUIDELINES</th>
+     <th>STARTDATE</th>
+     <th>ENDDATE</th>
+     <th>Cient Name</th>
+     <th>Address</th>
+     <th>Contact No</th>
+     <th>Email ID</th> -->
+<!-- <th>Action</th> -->
+
+
+<!-- </tr>
+   <tbody>
+       {% for p in pro %}
+       <tr class="table" style="background-color: rgb(202, 201, 248);">
+           <td>{{ p.topic }}</td>
+           <td>{{ p.requirement }}</td>
+           <td>{{ p.modules }}</td>
+           <td><a href="{% url 'open_project' p.id %}"><button class="btn btn-outline-dark">Guidelines</button></a></td>
+           <td>{{ p.start_date }}</td>
+           <td>{{  p.end_date }}</td>
+           <!-- <td>{{ p.cl_name }}</td>
+           <td>{{ p.cl_address }}</td>
+           <td>{{ p.cl_contact }}</td>
+           <td>{{ p.cl_email }}</td> -->
+<!-- <td>
+            <!-- {% for pr in prtl %}
+            {{ pr.team_lead.user.username }}
+            {% endfor %} -->
+<!-- <a href="{% url 'client_profile' p.id %}">Client Details</a>
+            <a href="{% url 'tl_project' p.id %}">View Teamleads</a>
+          </td> -->
+
+<!--            
+       </tr>
+       {% endfor %} -->
+<!-- </tbody>  -->
+<!-- </table>
+</div>
+</center> -->
+<div class="container">
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-2" style="margin-right: 0%;">
+    {% for p in pro %}
+    <div class="col mb-4" style="margin-right: 0%;">
+      <div class="card mt-2" style="text-align: center;background-color: rgb(226, 238, 248);margin-right: 0%;color: rgb(2, 8, 92);height: 100%;">
+        <div class="card-body" style="margin-right: 0%;">
+          <h4 class="card-title" style="padding-top: 0%;text-align: center;border-bottom: 1px solid rgb(26, 62, 160);color: rgb(6, 141, 96);">{{ p.topic }} &nbsp;&nbsp; <a
+              href="{% url 'open_project' p.id %}"> <img src="{% static 'images/att.png' %}" height="30px" width="30px"
+                style="margin-top: 1%;"></a><br><br>
+          </h4><br>
+          <p style="text-align: left;col"><b><u>Description</u> </b> &nbsp;&nbsp; :&nbsp;&nbsp; <span class="card-text">{{ p.desc }}</span></p>
+
+          <p style="text-align: left;"><b> <u>Requirements</u></b> &nbsp;&nbsp; :&nbsp;&nbsp; <span class="card-text">{{ p.requirement }}</span></p>
+          <p style="text-align: left;"><b><u>Modules</u> </b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
+            &nbsp;&nbsp;{{ p.modules }}</p>
+          <p style="text-align: left;"><b><u> Start Date </u></b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;
+            {{ p.start_date }}</p>
+          <p style="text-align: left;"><b> <u>End Date </u></b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
+            &nbsp;&nbsp;{{ p.end_date }}</p>
+            <p style="text-align: left;"><img src="{% static 'images/c2.jpeg' %}" height="35px" width="40px" style="margin-top: 1%;text-align: left;"></p>
+            <p style="text-align: left;"><b> Client Name </b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
+              &nbsp;&nbsp;{{ p.cl_name }}</p>
+              <p style="text-align: left;"><b> Address</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
+                &nbsp;&nbsp;{{ p.cl_address }}</p>
+                <p style="text-align: left;"><b> Contact </b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
+                  &nbsp;&nbsp;{{ p.cl_contact }}</p>
+                  <p style="text-align: left;"><b> Email </b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
+                    &nbsp;&nbsp;{{ p.cl_email }}</p>
+          <br>
+        </div>
+        <div class="modal-footer" style="border-top: 1px solid rgb(35, 35, 65);">
+          <h5 style="text-align: left;"><img src="{% static 'images/t3.png' %}" height="30px" width="30px" style="margin-top: 1%;"></h5>
+          {% for pr in prtl %}
+          {% if p.id == pr.project_name.id %}
+         <span><b>{{ pr.team_lead.user.username }} &nbsp;</b></span> 
+          {% endif %}
+          {% endfor %}
+
+      </div>
+      </div>
+      
+    </div>
+    
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

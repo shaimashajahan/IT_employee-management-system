@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+        @import "~@fortawesome/fontawesome-free/css/all.min.css";
+
+        #hlabel {
+            text-align: center;
+            color: rgb(102, 102, 102);
+            font-family: "Roboto Mono", monospace;
+            font-optical-sizing: auto;
+            font-weight: 1000;
+            font-style: normal;
+            size: 5em;
+            text-emphasis: 5em;
+        }
+
+        h2 {
+            font-family: "Poetsen One", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            padding-top: 50px;
+        }
+        h4 {
+            font-family: "Poetsen One", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            padding-top: 50px;
+        }
+        #ahead{
+            font-family: "Poetsen One", sans-serif;
+            font-weight: 300;
+            font-style: normal;
+            padding: 1%;
+            
+        }
+
+        #text {
+            font-family: "Poetsen One", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+        #approve:hover{
+color:whitesmoke;
+border: solid whitesmoke 1px;
+        }
+
+.sidebar {
+    /* height: 100%; */
+  position: fixed;
+  height: 600px;
+  top: 0px;
+  bottom: 0;
+  left: 0;
+  width: 200px;
+  background-color:rgb(121, 166, 206);
+  padding: 20px;
+}
+
+.sidebar-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+#lis {
+    color: rgb(35, 75, 116);
+   
+            font-weight: 700;
+            font-style: normal;
+   
+}
+#lst{
+    border-top: solid rgb(221, 221, 231) 1px;
+}
+#lst :hover{
+    background-color:rgb(147, 147, 173);
+    color: white;
+}
+
+
+
+.sidebar-item a {
+  color: #fff;
+  text-decoration: none;
+
+}
+#tld{
+            text-align: center;
+            background-color:  rgb(234, 237, 238); 
+            border: solid rgb(124, 132, 139)  2px;
+            margin-top: 10px;
+            border-radius: 15px;
+            width: 50%;
+            padding: 5px;
+        }
+        #tld :hover{
+            text-align: center;
+            border: solid rgb(124, 132, 139)  2px;
+            border-radius: 15px;
+            width: 100%;
+            background-color:rgb(11, 9, 117);
+            height: 50px;
+            margin: 0%;
+            padding: 0%;
+           
+            align-content: center;
+            color: white;
+        }
+        #tl{
+            font-family: "Poetsen One", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            
+        }
+        #tla{
+            text-decoration: none;
+            color:rgb(24, 20, 230); 
+               }
+
+        
+    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="(link unavailable)" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    {% load static %}
+
+</head>
+
+<body
+    style="background-image: url('{% static "images/tlwall.jpg" %}'); background-size: cover;background-repeat: no-repeat;width: 100%;">
+    
+    <div class="container-fluid">
+        <div class="row flex-nowrap" style="border: solid white 2px;">
+            <div class="col-auto col-md-2 min-vh-100 navbar-expand-md" style="background-color:rgb(224, 229, 233);border-right: solid rgb(243, 239, 248) 2px;">
+                <div style="background-color:rgb(224, 229, 233);">
+                    <a class="d-flex text-decoration-none mt-1 align-items-center text-dark">
+                        <span class="fs-4 d-none d-sm-inline"><img src="{% static 'images/logo.png' %}" class="img-fluid" alt="company name" height="50px"
+                            width="140px"></span></a>
+                            <button class="navbar-toggler" data-toggle="collapse" data-target="#options" type="button">
+                                <span><img src="{% static 'images/licon.png' %}" height="30px" width="40px" style="margin-top: 1%;"></span>
+                            </button>
+                        <div id="options" class="collapse navbar-collapse">
+
+                    <ul class="nav nav-pills flex-column mt-4">
+                        <li class="nav-item" >
+                            <a href="" class="nav-link" aria-current="page" style="background-color: rgb(81, 96, 112);color: white;font-weight: 700;font-style: normal;" >
+                                <img
+                    src="{% static 'images/t3.png' %}" height="30px" width="30px" style="margin-top: 1%;"> <i class="fs-5"></i><span class="fs-4 d-none d-sm-inline">&nbsp; {{ t.user.username }}</span>
+                            </a>
+                        </li>
+                        <li class="nav-item" id="lst">
+                            <a href="{% url 'TL_home' %}" class="nav-link" aria-current="page" id="lis">
+                                <img src="{% static 'images/hom.webp' %}" height="30px" width="30px" style="margin-top: 1%;"> <i class="fs-5"></i><span class="fs-4 d-none d-sm-inline">&nbsp; Home</span>
+                            </a>
+                        </li>
+                        <li class="nav-item"   id="lst">
+                            <a href="{% url 'TL_profile' %}" class="nav-link" aria-current="page" id="lis">
+                                <img src="{% static 'images/pro.jpeg' %}" height="30px" width="30px" style="margin-top: 1%;"> <i class="fs-5"></i><span class="fs-4 d-none d-sm-inline">&nbsp; View Profile</span>
+                            </a>
+                        </li>
+                        <li class="nav-item"   id="lst">
+                            <a href="{% url 'viewdeveloper_TL' %}" class="nav-link" aria-current="page" id="lis">
+                                <img src="{% static 'images/d7.jpeg' %}" height="30px" width="30px" style="margin-top: 1%;"> <i class="fs-5"></i><span class="fs-4 d-none d-sm-inline">&nbsp; View Developers</span>
+                            </a>
+                        </li>
+                        <li class="nav-item"   id="lst">
+                            <a href="{% url 'view_project' %}" class="nav-link" aria-current="page" id="lis">
+                                <button class="btn btn-danger">{{ pcount }}</button><i class="fs-5"></i><span class="fs-4 d-none d-sm-inline">&nbsp;View Project</span>
+                            </a>
+                        </li>
+                      
+                       
+                       
+                        <li class="nav-item" id="lst">
+                            <a href="{% url 'TL_viewmodules' %}" class="nav-link" aria-current="page"  id="lis">
+                                <img src="{% static 'images/asp.jpeg' %}" height="30px" width="30px" style="margin-top: 1%;">  <i class="fs-5"></i><span class="fs-4 d-none d-sm-inline">&nbsp; View Modules</span>
+                            </a>
+                        </li>
+                        <li class="nav-item" id="lst">
+                            <a href="{% url 'add_module' %}" class="nav-link" aria-current="page" id="lis">
+                               <img src="{% static 'images/addpp.png' %}" height="30px" width="30px" style="margin-top: 1%;"> <i class="fs-5"></i><span class="fs-4 d-none d-sm-inline">&nbsp; Add Modules</span>
+                            </a>
+                        </li>
+                        <li class="nav-item"  id="lst">
+                            <a href="{% url 'TL_assignmodule' %}" class="nav-link" aria-current="page" id="lis">
+                                <img src="{% static 'images/astl.jpeg' %}" height="30px" width="30px" style="margin-top: 1%;"><i class="fs-5"></i><span class="fs-4 d-none d-sm-inline">&nbsp; Assign Modules</span>
+                            </a>
+                        </li>
+                        <li class="nav-item"  id="lst">
+                            <a href="{% url 'tl_pworkprogress' %}" class="nav-link" aria-current="page" id="lis">
+                                <img src="{% static 'images/workp3.jpg' %}" height="30px" width="30px" style="margin-top: 1%;">  <i class="fs-5"></i><span class="fs-4 d-none d-sm-inline">&nbsp; View Project WorkProgress</span>
+                            </a>
+                        </li>
+                        <li class="nav-item"  id="lst">
+                            <a href="{% url 'TL_updateworkprogress' t.id %}" class="nav-link" aria-current="page" id="lis">
+                                <img src="{% static 'images/asp2.jpeg' %}" height="30px" width="30px" style="margin-top: 1%;"><i class="fs-5"></i><span class="fs-4 d-none d-sm-inline">&nbsp; Update Project WorkProgress</span>
+                            </a>
+                        </li>
+                        <li class="nav-item"  id="lst">
+                            <a href="{% url 'TLworkprogress' %}" class="nav-link" aria-current="page" id="lis">
+                                <img src="{% static 'images/ass.jpg' %}" height="30px" width="30px" style="margin-top: 1%;">  <i class="fs-5"></i><span class="fs-4 d-none d-sm-inline">&nbsp; Developer WorkProgress</span>
+                            </a>
+                        </li>
+                        
+                        
+                        <li class="nav-item"  id="lst"></li>
+                            <a href="{% url 'TL_change_pwd' %}" class="nav-link" aria-current="page" id="lis">
+                                <img src="{% static 'images/pwd3.png' %}" height="30px" width="30px" style="margin-top: 1%;"> <i class="fs-5"></i><span class="fs-4 d-none d-sm-inline">&nbsp; Change Password</span>
+                            </a>
+                        </li>
+                        <li class="nav-item"  id="lst">
+                            <a href="{% url 'TL_logout' %}" class="nav-link" aria-current="page" id="lis">
+                                <img src="{% static 'images/logout2.jpeg' %}" height="30px" width="30px" style="margin-top: 1%;"> <i class="fs-5"></i><span class="fs-4 d-none d-sm-inline">&nbsp; Logout</span>
+                            </a>
+                        </li>
+                    </ul>
+                        </div>
+                </div>
+            </div>
+            <div class="table-responsive">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+        
+    </div>
+     
+   
+</body>
+
+</html>

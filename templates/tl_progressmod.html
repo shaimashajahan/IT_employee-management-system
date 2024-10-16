@@ -1,0 +1,26 @@
+{% extends 'navbar_TL.html' %}
+{% block content %}
+{% load static %}
+<h4
+  style="color: rgb(234, 234, 235);text-align: center;background-color:rgb(64, 77, 94) ;border: solid 2px rgb(216, 208, 230);margin-bottom: 0%;"
+  class="pt-2 pb-2">MODULES
+</h4>
+
+
+<div class="container" style="background-image:url('{% static "images/p3.jpg" %}');background-size:cover;background-repeat: no-repeat;width: 100%; border: solid rgb(220, 228, 236) 2px ;margin-bottom:
+0%;height:900px;">
+<div class="row row-cols-2 row-cols-md-5 row-cols-lg-6 mt-5" style="width: 100%;padding-top:0%;" >
+    {% for m in tl_mod %}
+    <a href="{% url 'tl_devpro' m.id %}" style="text-decoration: none;">
+        <div class="col">
+            <div class="card bg-transparent border-0" style="text-align: center;">
+                <center><img src="{% static 'images/workp1.png' %}" alt="project_name" class="card-image-top
+     img" height="100px" width="100px"></center>
+                <h6 id="tl" class="card-title text-light">{{ m.modu.module_name }}</h6>
+           </div>
+        </div>
+    </a>
+    {% endfor %}
+</div>
+</div>
+{% endblock %}

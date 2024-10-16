@@ -1,0 +1,212 @@
+{% extends 'navbar_TL.html' %}
+{% block content %}
+{% load static %}
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewpor/'[t" content="width=device-width, initial-scale=1.0">
+    <title>validation form</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
+        #navbar1 a {
+            text-decoration: none;
+            color: white;
+            /* margin-left: 10px; */
+            /* padding-left:10px ; */
+            /* padding-right :10px ; */
+            /* padding-top: 10px; */
+            /* padding-bottom: 10px; */
+            size: 5em;
+            background-color: rgb(35, 75, 116);
+        }
+
+        #navbar1 a:hover {
+            background-color: rgb(0, 60, 179);
+            color: whitesmoke;
+            border: solid whitesmoke 3px;
+        }
+
+        #hlabel {
+            text-align: center;
+            padding-top: 18px;
+            color: rgb(102, 102, 102);
+            font-family: "Roboto Mono", monospace;
+            font-optical-sizing: auto;
+            font-weight: 1000;
+            font-style: normal;
+            size: 5em;
+            text-emphasis: 5em;
+        }
+
+        #member {
+            text-decoration: none;
+            color: white;
+            size: 5em;
+            background-color: rgb(35, 75, 116);
+            height: 40px;
+            width: 120px;
+            padding: 3px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <center>
+            <div class="row row-cols-1 row-cols-md-1 row-cols-lg-3">
+                <!-- <div class="container" style="text-align: center;">
+                    {% for message in messages %}
+                    <div class="alert alert-info container" style="text-align: center;">
+                        {{ message }}
+                    </div>
+                    {% endfor %}
+                </div> -->
+                <div class="col"></div>
+                <div class="col">
+                    <div class="container mt-5" style="text-align: center;">
+                    {% for message in messages %}
+                    <div class="alert alert-info container" style="text-align: center;">
+                        {{ message }}
+                    </div>
+                    {% endfor %}
+                </div>
+                    <div class="card" style="color:rgb(248, 249, 250) ;">
+                        <div class="card-body" style="background-color: rgb(85, 87, 92); border: 5px solid gray;">
+                            <img src="{% static 'images/picon.jpg' %}" height="30px" width="30px"
+                                style="margin-top: 1%;">
+                            <h4 class="card-title mb-4 pt-0">{{ m.user.username }}</h4>
+                            <p class="card-text" style="text-align: left;">First Name
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ m.user.first_name }}</p>
+                            <p class="card-text" style="text-align: left;">Last Name
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ m.user.last_name }}
+                            </p>
+                            <p class="card-text" style="text-align: left;">Address
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                {{ m.address }}</p>
+                            <p class="card-text" style="text-align: left;">
+                                Email &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ m.user.email }}</p>
+                            <p class="card-text" style="text-align: left;">
+                                Contact Number :
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ m.number }}</p>
+                            <p class="card-text" style="text-align: left;">Course Name &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ m.course }}</p>
+                            <p class="card-text" style="text-align: left;">Department
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ m.department }}</p>
+                            <p class="card-text mb-3">
+                                <a href="{% url 'open_certificate' m.id %}"><button class="btn btn-outline-light">View
+                                        Certificates</button></a><br><br>
+                                <button class="btn btn-outline-light" data-toggle="modal" data-target="#edit1">Edit
+                                        Profile</button>
+                                        
+                            </p>                    
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col"></div>
+        </center>
+    </div>
+    
+
+    <div class="modal" id="edit1">
+    <div class="modal-dialog">
+        <div class="modal-content bg-secondary">
+            <div class="modal-header">
+                <h5 style="margin-top: 0%;color: white;">Edit Profile</h5>
+                <button class="close" data-dismiss="modal" ><img src="{% static 'images/clos.jpeg' %}" height="35px" width="35px"
+                    style="margin-top: 1%;"></button>
+            </div>
+            <div class="modal-body">
+                <form enctype="multipart/form-data" action="{% url 'edit_tl' m.id %}" method="post" style="text-align: center;background-color:rgb(214, 216, 218);border: solid rgb(35, 75, 116)  2px;">
+                    {% csrf_token %}
+                    
+                    <div class="form-group mt-3" style="text-align: center;">   
+                        <h3 style="color: rgb(35, 75, 116);padding-top: 10px;">{{ m.user.username }}</h3> 
+                    </div>
+                    <div class="form-group" style="margin-left: 10%;margin-right: 10%;display: flex;">
+                        <label style="width: 50%;">First Name  </label>
+                        <input type="text" class="form-control"  id="firstname" name="fname" value="{{ m.user.first_name }}">
+                    </div>
+                    <div class="form-group" style="margin-left: 10%;margin-right: 10%;display: flex;">
+                        <label style="width: 50%;">Last Name  </label>
+                        <input type="text" class="form-control"  id="lastname" name="lname" value="{{ m.user.last_name }}">
+                    </div>
+                    <div class="form-group" style="margin-left: 10%;margin-right: 10%;display: flex;">
+                        <label style="width: 50%;">Address </label>
+                        <textarea  class="form-control" id="uaddr" name="addr">{{ m.address }}</textarea>
+                    </div>
+                   
+        
+                    <div class="form-group" style="margin-left: 10%;margin-right: 10%;display: flex;">
+                        <label style="width: 50%;">Email </label>
+                        <input type="email" class="form-control"  id="uemail" name="email" value="{{ m.user.email }}">
+                    </div>
+                    <div class="form-group" style="margin-left: 10%;margin-right: 10%;display: flex;">
+                        <label style="width: 50%;">Contact Number </label>
+                        <input type="text" class="form-control"  id="umob" name="number" value="{{ m.number }}">
+                    </div>
+                    <label style="color: darkslategrey;">What is the highest level of education you have completed:</label>
+                    <div class="form-group" style="margin-left: 10%;margin-right: 10%;">
+                        <select class="form-control" id="ucourse" name="course">
+                            <option value="SSLC" {% if m.course == 'SSLC' %} selected {% endif %}>SSLC</option>
+                            <option value="PlusTwo" {% if m.course == 'PlusTwo' %} selected {% endif %}>+2</option>
+                            <option value="Degree" {% if m.course == 'Degree' %} selected {% endif %}>Degree</option>
+                            <option value="Masters" {% if m.course == 'Masters' %} selected {% endif %}>Masters</option>
+                            <option value="B-Tech" {% if m.course == 'B-Tech' %} selected {% endif %}>B-Tech</option>
+                            <option value="M-Tech" {% if m.course == 'M-Tech' %} selected {% endif %}>M-Tech</option>
+                        </select>
+                        <small id="pcourse" class="text-danger"></small>
+                    </div>
+                    <label style="color: darkslategrey;">Attach your certificates here</label>
+                    <div class="form-group" style="margin-left: 10%;margin-right: 10%;">
+                        <input type="file" class="form-control" id="ucertificate" name="file" accept="uploads/*" value="{{ m.file.initial }}">
+                        
+                    </div>
+                    <!-- <div class="form-group"><label for="" class="text-secondary">{{ m.file.name }}</label></div>  -->
+        
+                    <label style="color: darkslategrey;">Select Department to Apply</label>
+                    <div class="form-group" style="margin-left: 10%;margin-right: 10%;">
+                        <select class="form-control" id="udepartment" name="dept">
+                            <option value="PYTHON" {% if m.department == 'PYTHON' %} selected {% endif %}>PYTHON</option>
+                            <option value="DigitalMarketing"  {% if m.department == 'DigitalMarketing' %} selected {% endif %}>DIGITAL MARKETING</option>
+                            <option value="JAVA"  {% if m.department == 'JAVA' %} selected {% endif %}>JAVA</option>
+                        </select>
+                    </div>
+                    <br>
+                    <div>
+                        <button class="btn btn-success" type="submit">
+                            UPDATE
+                        </button>
+                <br>
+                      <br>
+                    </div>
+                </form>
+            </div>
+           
+
+        </div>
+    </div>
+    </div>
+</div>
+
+
+</body>
+
+</html>
+
+{% endblock %}

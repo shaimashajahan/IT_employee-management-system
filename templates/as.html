@@ -1,0 +1,37 @@
+{% extends 'navbar_admin.html' %}
+{% block content %}
+{% load static %}
+<h4
+  style="color: rgb(234, 234, 235);text-align: center;background-color:rgb(64, 77, 94) ;border: solid 2px rgb(216, 208, 230);margin-bottom: 0%;"
+  class="pt-2 pb-2">ASSIGN TEAMLEAD
+</h4>
+<div style="text-align: center;background-color:rgb(197, 209, 219);border: solid rgb(220, 228, 236)  2px;height: 630px;">
+  <center>
+    <table class="table table-responsive table-stripped table-hover">
+        <tr class="table" style="background-color: rgb(173, 176, 212);">
+          <th>DEVELOPER NAME</th>
+          <th>DEPARTMENT</th>
+          <th>CURRENT TEAMLEAD</th>
+          <th>ASSIGN TEAMLEAD</th>
+        </tr>
+        <tbody>
+            {% for m2 in mem2 %}
+          <tr class="table" style="background-color: rgb(202, 201, 248);">
+            {% if m2.user.user_type == '3' and m2.user.status == '3' %}
+            <td>{{ m2.user.username }}</td>
+            <td>{{ m2.department }}</td>
+            <td>{{ m2.team.tl.username   }}</td>
+            <td>
+              <a href="{% url 'tldev_assign' m2.id %}"><button class="btn btn-outline-dark">
+                  SELECT TEAMLEAD</button></a>
+            </td>
+          </tr>
+          {% endif %}
+          {% endfor %}
+        </tbody>
+  </table>
+</center>
+
+  </div>
+
+  {% endblock %}

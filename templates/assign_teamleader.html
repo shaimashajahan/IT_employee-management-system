@@ -1,0 +1,50 @@
+{% extends 'navbar_admin.html' %}
+{% block content %}
+{% load static %}
+<h4
+  style="color: rgb(234, 234, 235);text-align: center;background-color:rgb(64, 77, 94) ;border: solid 2px rgb(216, 208, 230);margin-bottom: 0%;"
+  class="pt-2 pb-2">ASSIGN TEAMLEAD
+</h4>
+
+<div>
+  <center>
+
+  <div class="row" style="width: 100%;">
+    <div class="col"></div>
+    <div class="col-md-8" style="text-align: center;background-color:rgb(48, 55, 61);border: solid rgb(55, 56, 58)  2px;height: 630px;">
+      {% for message in messages %}
+      <div class="alert alert-info container" style="text-align: center;">
+          {{ message }}
+      </div>
+      {% endfor %} 
+      <table class="table table-responsive table-stripped table-hover" style="background-color: bisque;margin-top: 20px;">
+          <tr class="table" style="background-color: rgb(173, 176, 212);">
+            <th style="width: 180px;">DEVELOPER NAME</th>
+            <th style="width: 180px;">DEPARTMENT</th>
+            <th style="width: 180px;">CURRENT TEAMLEAD</th>
+            <th style="width: 200px;">ASSIGN TEAMLEAD</th>
+          </tr>
+          <tbody>
+            {% for m2 in mem2 %}
+            <tr class="table" style="background-color: rgb(202, 201, 248);">
+              {% if m2.user.user_type == '3' and m2.user.status == '3' %}
+              <td>{{ m2.user.username }}</td>
+              <td>{{ m2.department }}</td>
+              <td>{{ m2.team.tl.username }}</td>
+              <td>
+                <a href="{% url 'tldev_assign' m2.id %}"><button class="btn btn-outline-dark">
+                    SELECT TEAMLEAD</button></a>
+              </td>
+            </tr>
+            {% endif %}
+            {% endfor %}
+          </tbody>
+        </table>
+    </div>
+    <div class="col"></div>
+
+  </div>
+</center>
+</div>
+
+{% endblock %}

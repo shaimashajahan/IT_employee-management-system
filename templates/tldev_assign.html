@@ -1,0 +1,45 @@
+{% extends 'navbar_admin.html' %}
+{% block content %}
+{% load static %}
+<h4 style="color: rgb(234, 234, 235);text-align: center;background-color:rgb(64, 77, 94) ;border: solid 2px rgb(216, 208, 230);margin-bottom: 0%;"
+    class="pt-2 pb-2"> ASSIGN TEAMLEAD
+</h4>
+<div  style="text-align: center;background-color:rgb(197, 209, 219);border: solid rgb(220, 228, 236)  2px;height: 630px;padding-top: 50px;">
+    <center>
+        <div class="row row-cols-1 row-cols-md-3 mt-3">
+            <div></div>
+<div>
+        <form enctype="multipart/form-data" action="{% url 'assignfun' mem2.id %}" method="post">
+            {% csrf_token %}
+            <table class="table table-responsive table-stripped table-hover">
+                <tr class="table" style="background-color: rgb(120, 130, 247);">
+                    <th>DEVELOPER NAME</th>
+                    <th>SELECT TEAMLEAD</th>
+                </tr>
+                <tbody><tr style="background-color: rgb(222, 224, 238);">
+                    <td>{{ mem2.user.username }}</td>
+                    <td> <select name="sel" style="height: 50px;width: 150px;text-align: center;margin-left: 30px;">
+                            {% for t in tl %}
+                            {% if t.user.user_type == '2' and t.user.status == '2' %}
+                            <option value="{{ t.user.id }}" selected>{{ t.user.username }}</option>
+                            {% endif %}
+                            {% endfor %}
+                        </select></td>
+                   
+                    </tr>
+                    <tr style="background-color: rgb(222, 224, 238);;text-align: center;">
+                        <td colspan="2" style="text-align: center;">
+                            <a href=""><button class="btn btn-info">
+                                    ASSIGN</button></a>
+                        </td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </form>
+</div>
+<div></div>
+    </center>
+
+</div>
+{% endblock %}

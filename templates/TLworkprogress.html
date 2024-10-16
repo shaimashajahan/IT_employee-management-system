@@ -1,0 +1,31 @@
+{% extends 'navbar_TL.html' %}
+{% block content %}
+{% load static %}
+<h4
+  style="color: rgb(234, 234, 235);text-align: center;background-color:rgb(64, 77, 94) ;border: solid 2px rgb(216, 208, 230);margin-bottom: 0%;"
+  class="pt-2 pb-2">DEVELOPER  WORK  PROGRESS
+</h4>
+    <center>
+        <div class="row" style="background-image:url('{% static "images/wa1.jpg" %}');background-size:
+          cover;background-repeat: no-repeat;width: 100%; border: solid rgb(220, 228, 236) 2px ;margin-bottom:
+          0%;height:900px;">
+          <div class="col"></div>
+          <div class="col-md-6 mt-5" >
+      
+            {% for d in developer %}
+           
+            {% if d.user.user_type == '3' and d.user.status == '3' and d.team.id == uid %}
+            <div id="tld">
+      
+                <a href="{% url 'tl_progressmod' d.id %}" id="tla">
+                  <h6 class="pt-0" id="tl"> {{ d.user.first_name|upper }} &nbsp;{{ d.user.last_name|upper }}</h6>
+              </a>
+          </div>
+      
+            {% endif %}
+            {% endfor %}
+          </div>
+          <div class="col"></div>
+        </div>
+      </center>
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends 'navbar_TL.html' %}
+{% block content %}
+{% load static %}
+<div style="width: 100%;">
+    <div>
+        <center>
+                    {% for message in messages %}
+                       <strong><h5 style="background-color: rgb(42, 42, 83);color: aliceblue;">{{ message }}</h5></strong> 
+                    {% endfor %}
+        </center>
+    </div>
+    <center>
+<div class="row row-cols-1 row-cols-lg-3">
+    
+    <div class="col"></div>
+    <div class="col">
+        <form enctype="multipart/form-data" action="{% url 'add_modulefun' %}" method="post" style="text-align: center;background-color:rgb(197, 209, 219);border: solid rgb(35, 75, 116)  2px;margin-top: 10px;">
+            {% csrf_token %}
+
+            <div class="form-group">
+                <h3 style="color: rgb(35, 75, 116);padding-top: 30px;">Add Module</h3>
+            </div>
+            <div class="form-group" style="margin-left: 10%;margin-right: 10%;">
+                <select class="form-control" name="sel_pr">
+                    {% for pr in p_tl %}
+                    {% if pr.team_lead.user.id == uid %}
+                    <option value="{{pr.id }}">{{ pr.project_name.topic }}</option>
+                    {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group" style="margin-left: 10%;margin-right: 10%;">
+                <input type="text" class="form-control" placeholder="Module Name" name="module_name">
+            </div>
+            <div class="form-group" style="margin-left: 10%;margin-right: 10%;">
+                <textarea placeholder="Requirements" class="form-control" id="uaddr" name="requir"></textarea>
+                <small id="paddr" class="text-danger"></small>
+            </div>
+            <div class="form-group" style="margin-left: 10%;margin-right: 10%;">
+                <label style="color: darkslategrey;">Attachment</label>
+                <input type="file" class="form-control" name="file" accept="uploads/*">
+            </div>
+            <label style="color: darkslategrey;">Start Date</label>
+            <div class="form-group" style="margin-left: 10%;margin-right: 10%;">
+                <input type="date" class="form-control" placeholder="Start date" id="tname" name="sdate">
+            </div>
+            <label style="color: darkslategrey;">End Date</label>
+            <div class="form-group" style="margin-left: 10%;margin-right: 10%;">
+                <input type="date" class="form-control" placeholder="End date" id="tname" name="edate">
+            </div>
+            <!-- <label style="color: darkslategrey;">Select Developer</label> -->
+            <!-- <div class="form-group" style="margin-left: 10%;margin-right: 10%;">
+        <select class="form-control" name="select_dev">
+            {% for d in developer %}
+            {% if d.user.TL == uname %}
+            <option value="{{ d.id }}">{{ d.user.username }}</option>
+            {% endif %}
+            {% endfor %}
+        </select>
+    </div> -->
+            <button class="btn btn-primary" type="submit">
+                ADD
+            </button><br> <br>
+        </form>
+    </div>
+    <div class="col"></div>
+
+</div>
+</center>
+</div>
+{% endblock %}

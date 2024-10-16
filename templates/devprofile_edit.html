@@ -1,0 +1,84 @@
+{% extends 'navbar_developer.html' %}
+{% block content %}
+{% load static %}
+<body style="background-image: url('{% static "images/d22.jpg" %}'); background-size: cover; background-repeat: no-repeat; width: 100%;height:140vh;">
+<div class="row" style="width:100%">
+<div class="col"></div>
+<div class="col-md-7">
+<center>    
+    <form enctype="multipart/form-data" action="{% url 'edit_dev' m.id %}" method="post" style="text-align: center;background-color:rgb(241, 234, 240);border: solid rgb(124, 132, 139)  2px;margin-top: 10px;border-radius: 15px;">
+        {% csrf_token %}   
+        <div class="container">
+            {% for message in messages %}
+            <div class="alert alert-danger container" style="text-align: center;">
+                {{ message }}
+            </div>
+            {% endfor %}
+            </div>
+        <div class="form-group mt-3 " style="text-align: center;">   
+            <h3 style="color: rgb(35, 75, 116);padding-top: 10px;margin-bottom: 3%;">{{ m.user.username }}&nbsp;&nbsp;&nbsp;<img src="{% static 'images/edi.png' %}" height="25px" width="25px" style="margin-top: 1%;"></span></h3> 
+        </div>
+        <div class="form-group" style="margin-left: 10%;margin-right: 10%;display: flex;">
+            <label style="width: 50%;">First Name  </label>
+            <input type="text" class="form-control"  id="firstname" name="fname" value="{{ m.user.first_name }}">
+        </div>
+        <div class="form-group" style="margin-left: 10%;margin-right: 10%;display: flex;">
+            <label style="width: 50%;">Last Name  </label>
+            <input type="text" class="form-control"  id="lastname" name="lname" value="{{ m.user.last_name }}">
+        </div>
+        <div class="form-group" style="margin-left: 10%;margin-right: 10%;display: flex;">
+            <label style="width: 50%;">Address </label>
+            <textarea  class="form-control" id="uaddr" name="addr">{{ m.address }}</textarea>
+        </div>
+       
+
+        <div class="form-group" style="margin-left: 10%;margin-right: 10%;display: flex;">
+            <label style="width: 50%;">Email </label>
+            <input type="email" class="form-control"  id="uemail" name="email" value="{{ m.user.email }}">
+        </div>
+        <div class="form-group" style="margin-left: 10%;margin-right: 10%;display: flex;">
+            <label style="width: 50%;">Contact Number </label>
+            <input type="text" class="form-control"  id="umob" name="number" value="{{ m.number }}">
+        </div>
+        <label style="color: darkslategrey;">What is the highest level of education you have completed:</label>
+        <div class="form-group" style="margin-left: 10%;margin-right: 10%;">
+            <select class="form-control" id="ucourse" name="course">
+                <option value="SSLC" {% if m.course == 'SSLC' %} selected {% endif %}>SSLC</option>
+                <option value="PlusTwo" {% if m.course == 'PlusTwo' %} selected {% endif %}>+2</option>
+                <option value="Degree" {% if m.course == 'Degree' %} selected {% endif %}>Degree</option>
+                <option value="Masters" {% if m.course == 'Masters' %} selected {% endif %}>Masters</option>
+                <option value="B-Tech" {% if m.course == 'B-Tech' %} selected {% endif %}>B-Tech</option>
+                <option value="M-Tech" {% if m.course == 'M-Tech' %} selected {% endif %}>M-Tech</option>
+            </select>
+            <small id="pcourse" class="text-danger"></small>
+        </div>
+        <label style="color: darkslategrey;">Attach your certificates here</label>
+        <div class="form-group" style="margin-left: 10%;margin-right: 10%;">
+            <input type="file" class="form-control" id="ucertificate" name="file" accept="uploads/*" value="{{ m.file }}">
+            <!-- <label for="" class="text-secondary">{{ m.file.name }}</label> -->
+
+        </div>
+        <label style="color: darkslategrey;">Select Department to Apply</label>
+        <div class="form-group" style="margin-left: 10%;margin-right: 10%;">
+            <select class="form-control" id="udepartment" name="dept">
+                <option value="PYTHON" {% if m.department == 'PYTHON' %} selected {% endif %}>PYTHON</option>
+                <option value="DigitalMarketing"  {% if m.department == 'DigitalMarketing' %} selected {% endif %}>DIGITAL MARKETING</option>
+                <option value="JAVA"  {% if m.department == 'JAVA' %} selected {% endif %}>JAVA</option>
+            </select>
+        </div>
+        <br>
+        <div>
+            <button class="btn btn-success" type="submit">
+                UPDATE
+            </button>
+    <br>
+          <br>
+        </div>
+    </form>
+</center>
+</div>
+<div class="col"></div>
+
+</div>
+</body>
+{% endblock %}

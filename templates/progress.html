@@ -1,0 +1,53 @@
+{% extends 'navbar_admin.html' %}
+{% block content %}
+{% load static %}
+<h4 style="color: rgb(234, 234, 235);text-align: center;background-color:rgb(64, 77, 94) ;border: solid 2px rgb(216, 208, 230);margin-bottom: 0%;"
+    class="pt-2 pb-2"> EMPLOYEE WORK PROGRESS
+</h4>
+<div style="background-color:rgb(197, 209, 219);border: solid rgb(220, 228, 236)  2px;">
+    <div>
+        <img src="{% static 'images/t3.png' %}" height="20px" width="20px">&nbsp; {{ tl.user.username }}
+        <br>
+        {% for p in prtl %}
+        {% if p.team_lead.id == tl.id %}
+
+        <br>
+        
+        
+
+         <label style="background-color: rgb(22, 170, 22);padding: 4px;border-radius: 7px;color: antiquewhite;">{{ p.project_name.topic }}</label>
+       {% if p.id not in values %}
+       <br>
+       <h4 class="pt-0 text-danger">No Updates</h4>
+       {% endif %}
+         <table class="table table-responsive">
+            <tr>
+                {% for r in prp %}
+                {% if p.id == r.p_tl.id and p.id in values %}
+                <td style="border: 2px solid black;">
+                    {{ r.date }}
+                </td>
+                {% endif %}
+                {% endfor %}
+            </tr>
+            <tr>
+                {% for r in prp %}
+                {% if p.id == r.p_tl.id %}
+                <td style="border: 2px solid black;"><a href="{% url 'open_Pprogress' r.id %}"><button
+                            class="btn btn-primary" type="submit">
+                             progress
+                        </button></a></td>
+
+                {% endif %}
+                {% endfor %}
+            </tr>
+           
+
+
+
+        </table>
+        {% endif %}
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

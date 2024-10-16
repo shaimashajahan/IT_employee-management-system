@@ -1,0 +1,17 @@
+{% extends 'navbar_developer.html' %}
+{% block content %}
+{% load static %}
+<body style="background-image: url('{% static "images/d11.jpg" %}'); background-size: cover; background-repeat: no-repeat; width: 100%;height:100vh;">
+
+    
+    <div>
+        <center>
+            
+                    {% for message in messages %}
+                       <strong><h5 style="background-color: rgb(42, 42, 83);color: aliceblue;">{{ message }}</h5></strong> 
+                    {% endfor %}
+            
+        </center>
+    </div>
+</body>
+{% endblock %}
